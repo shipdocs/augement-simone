@@ -1,6 +1,6 @@
 # Simone Commands Guide
 
-This guide explains all available Simone commands and how to use them effectively in your ForeLoop project.
+This guide explains all available Simone commands and how to use them effectively in your project.
 
 ## Command Overview
 
@@ -301,8 +301,8 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 /project:simone:create_sprint_tasks S02
 
 # Sprint execution
-/project:simone:do_task T001_S02_challenge_templates
-/project:simone:do_task T002_S02_generation_engine
+/project:simone:do_task T001_S02_first_task
+/project:simone:do_task T002_S02_second_task
 /project:simone:commit --review
 
 # Sprint review
@@ -313,7 +313,7 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ```bash
 # Bug fix workflow
 /project:simone:create_general_task
-# Describe: "Fix memory leak in physics engine"
+# Describe: "Fix memory leak in /src/foo.bar"
 /project:simone:do_task T003
 /project:simone:test
 /project:simone:commit T003
@@ -343,7 +343,3 @@ If you need help with a command:
 2. Check this guide
 3. Look at task examples in `.simone/`
 4. Review the command source in `.claude/commands/simone/`
-
----
-
-Remember: Simone commands are designed to maintain quality while accelerating development. They handle the routine parts so you can focus on solving interesting problems!
