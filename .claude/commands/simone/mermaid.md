@@ -1,251 +1,237 @@
-# Maintain Mermaid Diagrams
+# Create, Update, and Maintain Mermaid Diagrams
 
-Instructions for generating, maintaining and updating the mermaid diagrams in the current project's architecture documentation.
+Follow these instructions from top to bottom to generate, update, or maintain mermaid diagrams in the project's architecture documentation.
 
-## 📋 Overview
+## Create a TODO with EXACTLY these 8 items
 
-The architecture documentation should include comprehensive mermaid diagrams that illustrate:
-- System context and component relationships  
-- Module dependencies and data flows (150+ modules)
-- Class hierarchies and interactions
-- Service layer patterns and UI architecture
+1. Parse arguments and determine action type
+2. Analyze project structure and existing diagrams
+3. Identify diagram scope and requirements
+4. Create or update mermaid diagram code
+5. Validate diagram syntax and rendering
+6. Update cross-references and documentation
+7. Apply diagram standards and styling
+8. Report results and provide next steps
 
-## 📂 Diagram Locations
+---
 
-All architecture diagrams are to be stored in `/docs/architecture/`:
+## 1 · Parse arguments and determine action type
+
+Check <$ARGUMENTS> to determine the requested action:
+
+- **CREATE**: Generate new architecture diagrams from scratch
+- **UPDATE**: Modify existing diagrams based on code changes
+- **MAINTAIN**: Review and refresh diagrams for accuracy
+- **Empty**: Analyze project and recommend action
+
+**If arguments specify a component/module**: Focus on that specific area
+**If arguments are general**: Perform comprehensive diagram work
+
+## 2 · Analyze project structure and existing diagrams
+
+**Check existing diagram locations:**
+
+All architecture diagrams should be in `/docs/architecture/`:
 
 ```
 docs/architecture/
 ├── README.md                           # Main architecture overview
-├── context_diagram.md                  # System context & data flow  
-├── module_overview.md                  # Module relationships (150+ modules)
+├── context_diagram.md                  # System context & data flow
+├── module_overview.md                  # Module relationships
 └── class_diagrams/
     ├── core_classes.md                 # Database, DAOs, data processing
     ├── data_models.md                  # Domain models & database schema
     └── service_layer.md                # UI architecture & service coordination
 ```
 
-## 🛠️ Update Process
+**Analyze the codebase using PARALLEL SUBAGENTS:**
 
-### Step 1: Identify Affected Diagrams
-Determine which diagrams need updates based on your changes:
+- SCAN project structure to understand architecture
+- IDENTIFY key components, modules, and services
+- CHECK existing diagrams for outdated information
+- FIND new additions that need documentation
 
-| Change Type | Primary Diagram | Secondary Diagrams |
-|-------------|----------------|-------------------|
-| New analytics module | module_overview.md | context_diagram.md |
-| Database schema change | data_models.md | core_classes.md |
-| New UI component | service_layer.md | module_overview.md |
-| New service/manager | service_layer.md | module_overview.md |
-| Architecture refactor | context_diagram.md | All others |
+## 3 · Identify diagram scope and requirements
 
-### Step 2: Update Mermaid Code
-Edit the relevant `.md` files to update mermaid diagram code:
+Based on analysis, determine what diagrams need work:
 
+**For CREATE action:**
+- System context diagram showing external interactions
+- Module overview for internal architecture
+- Class diagrams for key subsystems
+- Data flow diagrams if applicable
+
+**For UPDATE action:**
+- Compare existing diagrams with current code
+- Identify new components, removed elements, changed relationships
+- Mark diagrams that need modification
+
+**For MAINTAIN action:**
+- Review all diagrams for accuracy
+- Check naming consistency
+- Verify relationships and dependencies
+- Update documentation strings
+
+## 4 · Create or update mermaid diagram code
+
+**Example System Context Diagram:**
 ```mermaid
-# Example: Adding a new class to core_classes.md
-class NewAnalyticsService {
-    -CacheManager cache_manager
-    -Logger logger
-    +calculate_advanced_metrics() Dict
-    +generate_insights() List[str]
-}
-
-# Add relationships
-NewAnalyticsService --> CacheManager : uses
-NewAnalyticsService --> DatabaseManager : queries
+graph TB
+    subgraph "External Systems"
+        USER[Users]
+        API[External APIs]
+        DB[(Database)]
+    end
+    
+    subgraph "Your System"
+        WEB[Web Interface]
+        SVC[Service Layer]
+        CORE[Core Logic]
+    end
+    
+    USER --> WEB
+    WEB --> SVC
+    SVC --> CORE
+    CORE --> DB
+    CORE --> API
 ```
 
-### Step 3: Validate Diagrams
-Test diagram syntax and rendering:
-
-1. **Online validation**: Copy mermaid code to [Mermaid Live Editor](https://mermaid.live/)
-2. **Local preview**: Use VS Code Mermaid extensions
-3. **Check syntax**: Ensure proper mermaid formatting
-
-### Step 4: Update Cross-References
-Update any cross-references in documentation:
-
-- Update `docs/architecture/README.md` if adding new diagrams
-- Update navigation links between diagram files
-- Update main project README if architecture changes significantly
-
-## 📝 Mermaid Syntax Guidelines
-
-### Class Diagrams
+**Example Class Diagram:**
 ```mermaid
 classDiagram
-    class ClassName {
-        -private_field: Type
-        +public_method() ReturnType
-        #protected_method(param: Type) void
+    class DataManager {
+        -connection: DBConnection
+        +getData(): List~Data~
+        +saveData(data: Data): void
     }
     
-    %% Relationships
-    ClassA <|-- ClassB : inherits
-    ClassA *-- ClassC : composition  
-    ClassA --> ClassD : uses
-    ClassA ..> ClassE : depends on
+    class Service {
+        -manager: DataManager
+        +process(): Result
+    }
     
-    %% Notes
-    note for ClassName "Important implementation details"
+    Service --> DataManager : uses
 ```
 
-### Flowcharts
-```mermaid
-flowchart TD
-    A[Start] --> B{Decision}
-    B -->|Yes| C[Action 1]
-    B -->|No| D[Action 2]
-    C --> E[End]
-    D --> E
-    
-    %% Styling
-    style A fill:#e1f5fe
-    style E fill:#e8f5e8
+**Best Practices:**
+- Keep diagrams focused and readable
+- Use consistent naming conventions
+- Group related components
+- Add brief descriptions where helpful
+- Use appropriate diagram types for the content
+
+## 5 · Validate diagram syntax and rendering
+
+**Validation checks:**
+- Ensure mermaid syntax is correct
+- Preview diagrams in markdown viewer
+- Check that all components are represented
+- Verify relationships are accurate
+- Confirm layout is clear and logical
+
+**Common issues to check:**
+- Missing semicolons or brackets
+- Incorrect arrow syntax
+- Undefined node references
+- Circular dependencies clearly shown
+- Proper escaping of special characters
+
+## 6 · Update cross-references and documentation
+
+**Update README.md in `/docs/architecture/`:**
+- Add links to all diagram files
+- Include brief description of each diagram
+- Provide navigation structure
+- Add update timestamp
+
+**Example README structure:**
+```markdown
+# Architecture Documentation
+
+Last Updated: [DATE]
+
+## Available Diagrams
+
+1. [System Context](./context_diagram.md) - External interfaces and data flow
+2. [Module Overview](./module_overview.md) - Internal module structure
+3. Class Diagrams:
+   - [Core Classes](./class_diagrams/core_classes.md)
+   - [Data Models](./class_diagrams/data_models.md)
+   - [Service Layer](./class_diagrams/service_layer.md)
 ```
 
-### Sequence Diagrams
-```mermaid
-sequenceDiagram
-    participant A as Actor
-    participant B as System
-    
-    A->>B: Request
-    B->>B: Process
-    B-->>A: Response
-    
-    Note over A,B: Important interaction
+## 7 · Apply diagram standards and styling
+
+**Consistent styling guidelines:**
+
+**Color scheme:**
+- External systems: `#E8F4F8`
+- Core components: `#B8E0D2`
+- Services: `#D4E8D9`
+- Data stores: `#F0E6D2`
+
+**Node naming:**
+- Use PascalCase for classes
+- Use UPPER_CASE for systems
+- Use descriptive names
+- Avoid abbreviations
+
+**Layout principles:**
+- Top-to-bottom for hierarchies
+- Left-to-right for workflows
+- Group related components
+- Minimize crossing lines
+
+## 8 · Report results and provide next steps
+
+Create a summary report:
+
+```
+Mermaid Diagram Update Report
+============================
+
+Action Performed: [CREATE/UPDATE/MAINTAIN]
+Date: [YYYY-MM-DD]
+
+Diagrams Created/Updated:
+- [ ] System Context Diagram
+- [ ] Module Overview
+- [ ] Core Classes
+- [ ] Data Models
+- [ ] Service Layer
+
+Changes Made:
+- [List key changes]
+
+Validation Status:
+- ✓ All diagrams render correctly
+- ✓ Cross-references updated
+- ✓ README.md updated
+
+Next Steps:
+1. Review diagrams in rendered markdown
+2. Update if project structure changes
+3. Consider additional detail diagrams for complex areas
 ```
 
-## 🎨 Styling Guidelines
+**Maintenance recommendations:**
+- Update diagrams with each major feature
+- Review quarterly for accuracy
+- Add new diagrams for new subsystems
+- Keep diagrams synchronized with code
 
-### Color Scheme
-Use consistent colors across all diagrams:
+## Quick Reference Commands
 
-```mermaid
-%% Standard color palette
-style MainComponents fill:#4ecdc4,color:#fff
-style DataLayer fill:#f3e5f5
-style CacheLayer fill:#fff8e1  
-style UILayer fill:#e8f5e8
-style ExternalSystems fill:#e1f5fe
-```
-
-### Component Categories
-- **🏗️ Core Infrastructure**: `#4ecdc4` (teal)
-- **📊 Analytics/Data**: `#f3e5f5` (light purple)
-- **⚡ Caching/Performance**: `#fff8e1` (light yellow)
-- **🎨 UI Components**: `#e8f5e8` (light green)
-- **🔗 External Systems**: `#e1f5fe` (light blue)
-
-## 📋 Common Update Scenarios
-
-### Adding a New Analytics Module
-1. **Update module_overview.md**: Add to Analytics Engine section
-2. **Update class diagrams**: Add detailed class structure if significant
-3. **Update context_diagram.md**: Add if it's a major new capability
-
-```mermaid
-# Example: New trend analysis module
-TREND_ANALYZER[trend_analyzer.py<br/>📈 Advanced Trends]
-TREND_ANALYZER --> DAILY_CALC
-TREND_ANALYZER --> CACHE
-```
-
-### New UI Component or Widget
-1. **Update service_layer.md**: Add class definition and relationships
-2. **Update module_overview.md**: Add to UI Layer section
-3. **Consider component factory updates**
-
-```mermaid
-# Example: New dashboard widget
-class NewDashboardWidget {
-    -MetricsCalculator calculator
-    -ComponentFactory factory
-    +setup_ui() void
-    +refresh_data() void
-}
-QWidget <|-- NewDashboardWidget : inherits
-```
-
-### Database Schema Changes  
-1. **Update data_models.md**: Modify ER diagram and class definitions
-2. **Update core_classes.md**: Update DAO methods if needed
-3. **Document migration requirements**
-
-### New Service or Manager Class
-1. **Update service_layer.md**: Add to appropriate service category
-2. **Update relationships**: Show dependencies and usage patterns
-3. **Update module_overview.md**: Add service layer connections
-
-## 🔍 Validation Checklist
-
-Before committing diagram updates:
-
-- [ ] **Syntax Valid**: Diagram renders without errors
-- [ ] **Consistent Styling**: Uses standard color scheme
-- [ ] **Accurate Relationships**: Reflects actual code relationships
-- [ ] **Clear Labels**: All components clearly labeled
-- [ ] **Cross-References Updated**: Navigation links work
-- [ ] **README Updated**: Main architecture README reflects changes
-
-## 🤖 Automation & Maintenance Scripts
-
-### Useful Commands for Analysis
 ```bash
-# Find all Python classes in the codebase
-find src/ -name "*.py" -exec grep -l "^class " {} \; | sort
+# Generate all architecture diagrams
+/project:simone:mermaid CREATE
 
-# Check module imports to understand dependencies
-grep -r "^from src\." src/ | cut -d: -f2 | sort | uniq
+# Update existing diagrams
+/project:simone:mermaid UPDATE
 
-# Find new files since last commit
-git diff --name-only HEAD~1 | grep "\.py$"
+# Maintain and validate diagrams
+/project:simone:mermaid MAINTAIN
 
-# Count modules by package
-find src/ -name "*.py" | cut -d/ -f2 | sort | uniq -c
+# Focus on specific component
+/project:simone:mermaid UPDATE authentication
 ```
-
-### Maintenance Tasks
-1. **Quarterly Review**: Compare diagrams against actual codebase structure
-2. **Release Preparation**: Ensure all diagrams reflect release state
-3. **Refactoring Support**: Update diagrams during major refactors
-4. **New Developer Onboarding**: Keep diagrams current for documentation
-
-## 🚨 Best Practices
-
-### Do's
-- ✅ **Keep diagrams focused**: One primary concept per diagram
-- ✅ **Use consistent naming**: Match actual class/module names
-- ✅ **Add explanatory notes**: Include important design decisions
-- ✅ **Regular updates**: Keep diagrams current with code changes
-- ✅ **Validate syntax**: Always test before committing
-
-### Don'ts  
-- ❌ **Avoid over-complexity**: Don't include every minor detail
-- ❌ **Don't duplicate**: Each relationship should appear in most appropriate diagram
-- ❌ **Avoid generic names**: Use specific, meaningful component names
-- ❌ **Don't ignore styling**: Consistent colors improve readability
-- ❌ **Don't skip validation**: Always check diagram rendering
-
-## 📞 Support & Resources
-
-### Documentation Resources
-- [Mermaid Documentation](https://mermaid-js.github.io/mermaid/)
-- [Mermaid Live Editor](https://mermaid.live/) - For testing diagrams
-- [VS Code Mermaid Extension](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
-
-### Quick Reference
-- **Architecture overview**: `/docs/architecture/README.md`
-- **System context**: `/docs/architecture/context_diagram.md`
-- **Module relationships**: `/docs/architecture/module_overview.md`
-- **Class details**: `/docs/architecture/class_diagrams/`
-
-### Getting Help
-1. **Reference existing patterns**: Look at similar components in current diagrams
-2. **Check diagram history**: Use git to see how similar changes were handled
-3. **Ask in code review**: Get feedback on architectural accuracy
-
----
-
-*Keep architecture diagrams accurate, useful, and maintainable as the project evolves. Focus on clarity and consistency to support both current development and future maintenance.*

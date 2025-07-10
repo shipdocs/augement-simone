@@ -24,7 +24,7 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 5. Creates your first milestone
 6. Generates project manifest
 
-**When to use**: First time setting up Simone in a project (already done for ForeLoop!)
+**When to use**: First time setting up Simone in a project
 
 ---
 
@@ -136,8 +136,8 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 # Or for specific task:
 /project:simone:commit T001_S01_setup_tauri
 
-# With review:
-/project:simone:commit --review
+# With YOLO mode (skip confirmations):
+/project:simone:commit YOLO
 ```
 
 **What it does**:
@@ -249,6 +249,35 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 - Answers questions
 
 **When to use**: To understand review feedback better
+
+---
+
+### 📊 `/project:simone:mermaid`
+**Purpose**: Create and maintain architecture diagrams
+
+**Usage**:
+```
+/project:simone:mermaid CREATE
+# Generate new architecture diagrams
+
+/project:simone:mermaid UPDATE
+# Update existing diagrams based on code changes
+
+/project:simone:mermaid MAINTAIN
+# Review and refresh diagrams for accuracy
+
+/project:simone:mermaid UPDATE authentication
+# Update diagrams for specific component
+```
+
+**What it does**:
+1. Analyzes project structure
+2. Creates/updates mermaid diagrams
+3. Generates architecture documentation in `/docs/architecture/`
+4. Validates diagram syntax
+5. Maintains consistency across diagrams
+
+**When to use**: Document architecture visually
 
 ## Automation Commands
 
