@@ -1,8 +1,0 @@
-name: test-dynamic
-description: Test prompt with dynamic content
-arguments:
-  - name: message
-    description: Message to include
-    required: true
-template: |
-  Hello Claude, today is {{TIMESTAMP}} and the user said '{{message}}'
