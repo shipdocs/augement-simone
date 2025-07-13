@@ -1,0 +1,13 @@
+{{!-- CLI instructions for GitHub operations --}}
+I'll use the GitHub CLI to create the issue:
+
+```bash
+gh issue create \
+  --repo {{github.repository}} \
+  --title "[Based on our discussion]" \
+  --body "[Complete task description]" \
+  {{#if github.defaultLabels}}--label "{{#each github.defaultLabels}}{{this}}{{#unless @last}},{{/unless}}{{/each}}" \{{/if}}
+  --assignee @me
+```
+
+Make sure you're authenticated with `gh auth status` before I proceed.

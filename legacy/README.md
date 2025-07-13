@@ -1,6 +1,4 @@
-# Simone for Claude Code
-
-[![Mentioned in Awesome Claude Code](https://awesome.re/mentioned-badge.svg)](https://github.com/hesreallyhim/awesome-claude-code)
+# Simone for Claude Code (Legacy Version)
 
 ## What is this?
 

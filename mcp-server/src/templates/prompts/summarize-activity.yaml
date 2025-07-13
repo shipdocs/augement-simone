@@ -1,0 +1,66 @@
+name: summarize-activity
+description: Generate activity summary for specified time period
+arguments:
+  - name: period
+    description: Time period (today, yesterday, 7d, 30d)
+    required: false
+    default: "today"
+template: |
+  # Activity Summary Request
+
+  Time period: {{period}}
+
+  **ANALYZE** the activity logs for the specified period and create a comprehensive summary.
+
+  ## Instructions
+
+  1. **QUERY** the SQLite database at `.simone/simone.db`
+  2. **CALCULATE** the appropriate date range based on the period
+  3. **RETRIEVE** all activities within that range
+  4. **GENERATE** a summary with the following sections:
+
+  ### Summary Format
+
+  #### Overview
+  - Total activities count
+  - Success/failure rate
+  - Most active tools
+  - Most common activity types
+
+  #### Daily Breakdown (for 7d/30d)
+  Create a table showing:
+  | Date | Activities | Types | Success Rate |
+  |------|------------|-------|--------------|
+
+  #### Activity Details
+  - Group by activity type
+  - Show most recent activities
+  - Highlight any failures or errors
+
+  #### Tags Analysis
+  - Most used tags
+  - Tag distribution
+
+  #### Narrative Insights
+  Write a paragraph analyzing:
+  - Productivity patterns
+  - Focus areas
+  - Notable accomplishments
+  - Potential improvements
+
+  ## SQL Queries to Use
+
+  For date calculations:
+  - today: `date('now', 'localtime')`
+  - yesterday: `date('now', '-1 day', 'localtime')`
+  - 7d: `date('now', '-7 days', 'localtime')`
+  - 30d: `date('now', '-30 days', 'localtime')`
+
+  Example query structure:
+  ```sql
+  SELECT * FROM activity_log 
+  WHERE date(timestamp) >= date('now', '-X days', 'localtime')
+  ORDER BY timestamp DESC;
+  ```
+
+  **IMPORTANT**: Present the data in a clear, actionable format that helps track progress and identify patterns.

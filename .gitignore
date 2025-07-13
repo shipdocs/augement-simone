@@ -1,21 +1,6 @@
 # OS generated files
 .DS_Store
-.DS_Store?
 ._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Root level files (except specific allowed files)
-/*
-!/.simone
-!/.claude
-!/.gitignore
-!/README.md
-!/LICENSE
-!/sync-simone.sh
-!/CHANGELOG.md
 
 # Editor directories and files
 .cursor/
@@ -23,28 +8,43 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
-*.swp
-*.swo
-*~
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
+# Environment files
 .env
+.env.local
 
 # Node
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+coverage/
 
 # Logs
 *.log
 
-# Folders
-mixed_notes
+# Simone project-specific
+.simone/
+simone-activity.db
+
+# Claude specific
+.claude-trace/
+CLAUDE.local.md
+*.local.*
+
+# MCP configuration
+.mcp.json
+
+# Project management
+TODO.md
+DEVINFO.md
+
+# Temporary files
+repo-reorganization.md
+
+# Local folders
+mixed_notes/

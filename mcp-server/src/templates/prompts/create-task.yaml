@@ -1,0 +1,130 @@
+name: create-task
+description: Interactive task creation assistant that helps analyze and define tasks
+arguments:
+  - name: context
+    description: Initial context or topic area
+    required: false
+    default: "general"
+template: |
+  # Create Task - Interactive Process
+
+  Task Context: {{context}}
+
+  **CREATE A TODO LIST** with exactly these 7 items:
+
+  1. Gather initial requirements
+  2. Analyze project context
+  3. Research and explore solutions
+  4. Define task specification
+  5. Review with user
+  6. Create GitHub issue
+  7. Finalize and confirm
+
+  ## DETAILS on every TODO item
+
+  ## 1 · Gather initial requirements
+
+  **ASK THE USER** about their task needs:
+  - What problem are you trying to solve?
+  - What feature or improvement do you want?
+  - What is the current behavior vs desired behavior?
+  - Are there any specific constraints or requirements?
+  - What is the priority and timeline?
+
+  **IMPORTANT:** Do not proceed until you have clear answers. Ask follow-up questions if needed.
+
+  ## 2 · Analyze project context
+
+  **USE PARALLEL SUBAGENTS** to:
+  - Search codebase for related functionality
+  - Identify existing patterns and conventions  
+  - Review project structure and architecture
+  - Check for similar implementations
+  - Analyze potential impact areas
+
+  **CRITICAL:** Share findings with user before proceeding.
+
+  ## 3 · Research and explore solutions
+
+  **RESEARCH** using available tools:
+  - Web search for best practices if needed
+  - Check documentation for relevant patterns
+  - Explore multiple implementation approaches
+  - Consider trade-offs and alternatives
+
+  **ALWAYS** present options to the user with pros/cons.
+
+  ## 4 · Define task specification
+
+  **CREATE** comprehensive task definition including:
+
+  ### Objectives
+  - Clear, measurable goals
+  - Success criteria
+  - Out of scope items
+
+  ### Implementation Plan
+  - Step-by-step approach
+  - Technical details
+  - Dependencies and prerequisites
+
+  ### Risk Assessment
+  - Potential challenges
+  - Edge cases to consider
+  - Mitigation strategies
+
+  ### Testing Requirements
+  - Unit test scenarios
+  - Integration test needs
+  - Manual testing steps
+
+  **IMPORTANT:** Get user agreement on each section.
+
+  ## 5 · Review with user
+
+  **PRESENT** the complete task specification to the user:
+  - Summarize all key decisions
+  - Highlight any open questions
+  - Confirm implementation approach
+  - Verify success criteria
+
+  **ONLY IF** user approves, proceed to step 6.
+
+  ## 6 · Create GitHub issue
+
+  {{#if github}}
+  **CREATE ISSUE** using GitHub integration:
+
+  {{#if (eq github.tool "mcp")}}
+  {{> github-tools-mcp}}
+  {{else}}
+  {{> github-tools-cli}}
+  {{/if}}
+
+  Issue should include:
+  - Complete task specification from step 4
+  - Complexity estimate (Low/Medium/High)
+  - Relevant labels and assignees
+  {{else}}
+  **MANUAL CREATION REQUIRED**
+  
+  GitHub not configured. Provide complete markdown for manual issue creation.
+  {{/if}}
+
+  ## 7 · Finalize and confirm
+
+  **CONFIRM** with user:
+  - Issue created successfully (show link/number)
+  - Task documented properly
+  - Next steps are clear
+
+  **CREATE** summary of what was accomplished.
+
+  ## IMPORTANT GUIDELINES
+
+  - **NEVER** skip the interactive requirements gathering
+  - **ALWAYS** use tools to research before suggesting solutions  
+  - **CRITICAL:** Get explicit user approval before creating issues
+  - **USE SUBAGENTS** for parallel research tasks
+  - Keep user informed at each step
+  - Be thorough but concise in documentation

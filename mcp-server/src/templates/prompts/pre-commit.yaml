@@ -1,0 +1,29 @@
+name: pre-commit
+description: Pre-commit checklist with project-specific tooling
+arguments:
+  - name: changes
+    description: Description of changes to commit
+    required: false
+    default: "Unspecified changes"
+template: |
+  # Pre-commit Checklist
+
+  You're about to commit: {{changes}}
+
+  Please ensure the following checks pass before committing:
+
+  {{feature "tooling.lint"}}
+
+  {{feature "tooling.test"}}
+
+  {{feature "tooling.format"}}
+
+  ## Commit Guidelines
+  
+  - Use conventional commit format: feat|fix|chore|docs: description
+  - Keep commits focused and atomic
+  - Write clear, descriptive commit messages
+  
+  {{#if project.name}}
+  Project: {{project.name}}
+  {{/if}}

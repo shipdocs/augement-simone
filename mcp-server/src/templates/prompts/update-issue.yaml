@@ -1,0 +1,98 @@
+name: update-issue
+description: Update an existing GitHub issue (status, labels, assignees, etc.)
+arguments:
+  - name: issue_number
+    description: The issue number to update
+    required: true
+  - name: action
+    description: What to do with the issue (close, reopen, edit, comment)
+    required: true
+  - name: title
+    description: New title (for edit action)
+    required: false
+  - name: labels_add
+    description: Labels to add (comma-separated)
+    required: false
+  - name: labels_remove
+    description: Labels to remove (comma-separated)
+    required: false
+  - name: assignees
+    description: Assignees to set (comma-separated usernames)
+    required: false
+  - name: comment
+    description: Comment to add (for comment action)
+    required: false
+template: |
+  # Update Issue #{{issue_number}}
+
+  {{> header}}
+
+  ## Update Details
+
+  **Issue**: #{{issue_number}}
+  **Action**: {{action}}
+
+  {{#if github}}
+  {{> github}}
+
+  ### Instructions
+
+  {{#if (eq action "close")}}
+  {{#if (eq github.tool "mcp")}}
+  Use the `github_update_issue` tool to close issue #{{issue_number}}:
+  - state: "closed"
+  {{else}}
+  Close the issue using:
+  ```bash
+  gh issue close {{issue_number}} --repo {{github.repository}}
+  ```
+  {{/if}}
+  
+  {{else if (eq action "reopen")}}
+  {{#if (eq github.tool "mcp")}}
+  Use the `github_update_issue` tool to reopen issue #{{issue_number}}:
+  - state: "open"
+  {{else}}
+  Reopen the issue using:
+  ```bash
+  gh issue reopen {{issue_number}} --repo {{github.repository}}
+  ```
+  {{/if}}
+  
+  {{else if (eq action "edit")}}
+  {{#if (eq github.tool "mcp")}}
+  Use the `github_update_issue` tool to edit issue #{{issue_number}} with:
+  {{#if title}}- title: "{{title}}"{{/if}}
+  {{#if labels_add}}- labels to add: {{labels_add}}{{/if}}
+  {{#if labels_remove}}- labels to remove: {{labels_remove}}{{/if}}
+  {{#if assignees}}- assignees: {{assignees}}{{/if}}
+  {{else}}
+  Edit the issue using:
+  ```bash
+  gh issue edit {{issue_number}} --repo {{github.repository}} \
+    {{#if title}}--title "{{title}}" \{{/if}}
+    {{#if labels_add}}--add-label "{{labels_add}}" \{{/if}}
+    {{#if labels_remove}}--remove-label "{{labels_remove}}" \{{/if}}
+    {{#if assignees}}--assignee "{{assignees}}"{{/if}}
+  ```
+  {{/if}}
+  
+  {{else if (eq action "comment")}}
+  {{#if (eq github.tool "mcp")}}
+  Use the `github_comment_issue` tool to add a comment to issue #{{issue_number}}:
+  - body: "{{comment}}"
+  {{else}}
+  Add a comment using:
+  ```bash
+  gh issue comment {{issue_number}} --repo {{github.repository}} --body "{{comment}}"
+  ```
+  {{/if}}
+  {{/if}}
+
+  {{else}}
+  ## No GitHub Integration Configured
+
+  Cannot update issue #{{issue_number}} - GitHub integration is not configured.
+  {{/if}}
+
+  {{> footer}}

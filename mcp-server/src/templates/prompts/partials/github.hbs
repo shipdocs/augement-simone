@@ -1,0 +1,8 @@
+{{!-- GitHub integration partial - shows configuration status --}}
+{{#if github}}
+{{#if (eq github.tool "mcp")}}
+{{> github-mcp}}
+{{else}}
+{{> github-cli}}
+{{/if}}
+{{/if}}

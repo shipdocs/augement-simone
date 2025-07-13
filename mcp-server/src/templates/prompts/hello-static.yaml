@@ -1,0 +1,4 @@
+name: hello-static
+description: A simple hello world prompt
+template: |
+  Hello Claude from the Simone-MCP

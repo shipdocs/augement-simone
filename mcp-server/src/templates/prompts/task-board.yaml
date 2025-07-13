@@ -1,0 +1,20 @@
+name: task-board
+description: Display tasks in a board layout using nested partials
+arguments:
+  - name: boardName
+    description: Name of the task board
+    required: true
+  - name: tasks
+    description: Array of task objects
+    required: true
+template: |
+  {{> header title=boardName}}
+
+  ## Task Board: {{boardName}}
+
+  {{#each tasks}}
+  {{> task-card id=this.id status=this.status priority=this.priority assignee=this.assignee description=this.description}}
+  
+  {{/each}}
+
+  Total tasks: {{tasks.length}}

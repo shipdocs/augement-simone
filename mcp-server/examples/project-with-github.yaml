@@ -1,0 +1,31 @@
+# Example Simone project configuration with GitHub integration
+project:
+  name: My Project
+  type: single
+
+# GitHub integration configuration
+github:
+  repository: "myuser/myproject"
+  tool: "mcp"  # Use GitHub MCP server (or "cli" for gh CLI)
+  defaultLabels:
+    - "simone"
+    - "ai-generated"
+
+contexts:
+  - name: main
+    path: .
+    stack:
+      language: typescript
+      framework:
+        enabled: true
+        name: nextjs
+    tooling:
+      lint:
+        enabled: true
+        command: "npm run lint"
+      test:
+        enabled: true
+        command: "npm test"
+      format:
+        enabled: true
+        command: "npm run format"

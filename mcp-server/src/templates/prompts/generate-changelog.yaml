@@ -1,0 +1,56 @@
+name: generate-changelog
+description: Generate and humanize changelog entries for version releases
+arguments:
+  - name: version_type
+    description: Type of version bump (patch, minor, major)
+    required: false
+    default: "patch"
+template: |
+  # Generate Human-Readable Changelog
+
+  **Version Type**: {{version_type}}
+  
+  ## Instructions
+
+  1. **First**, run the conventional-changelog command to generate raw entries:
+     ```bash
+     cd /Users/helmi/code/claude-simone/mcp-server
+     pnpm changelog
+     ```
+
+  2. **Read** the generated CHANGELOG.md and analyze the new entries under [Unreleased]
+
+  3. **Rewrite** the entries to be more human-readable:
+     - Convert technical commit messages to user-friendly descriptions
+     - Group related changes together
+     - Remove implementation details that don't matter to users
+     - Focus on "what changed" and "why it matters"
+     - Keep the Keep a Changelog categories: Added, Changed, Deprecated, Removed, Fixed, Security
+
+  4. **Format** following these guidelines:
+     - Use clear, concise language
+     - Start each entry with a verb
+     - Explain the benefit or impact when relevant
+     - Avoid jargon and technical implementation details
+     - Combine similar small changes into one meaningful entry
+
+  5. **Example transformation**:
+     - Technical: "feat(tools): implement SQLite database connection with better-sqlite3"
+     - Human: "Added activity logging to track development progress"
+
+  6. **Version bump considerations**:
+     - **Patch** (0.1.0 → 0.1.1): Bug fixes, documentation, small improvements
+     - **Minor** (0.1.0 → 0.2.0): New features, significant improvements
+     - **Major** (0.x.y → 1.0.0): Breaking changes, major milestones
+
+  {{#if (eq version_type "patch")}}
+  7. **For patch release**: Focus on bug fixes and small improvements
+  {{else if (eq version_type "minor")}}
+  7. **For minor release**: Highlight new features and capabilities
+  {{else}}
+  7. **For major release**: Emphasize breaking changes and migration notes
+  {{/if}}
+
+  8. **Finally**, update the [Unreleased] section header with the new version number and today's date
+
+  Remember: The changelog is for humans, not machines. Make it readable and useful!

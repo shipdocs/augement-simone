@@ -1,0 +1,18 @@
+## Run Tests
+
+Execute the test suite:
+{{#each results}}
+{{#if ../results.[1]}}
+- **{{context.name}}** ({{context.path}}): `{{feature.command}}`
+{{else}}
+```bash
+{{feature.command}}
+```
+{{/if}}
+{{#if feature.coverage}}
+  Coverage report: `{{feature.coverage}}`
+{{/if}}
+{{#if feature.watch}}
+  Watch mode: `{{feature.watch}}`
+{{/if}}
+{{/each}}

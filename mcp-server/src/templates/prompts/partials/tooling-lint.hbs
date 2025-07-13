@@ -1,0 +1,15 @@
+## Code Quality Check
+
+Run linting to ensure code quality:
+{{#each results}}
+{{#if ../results.[1]}}
+- **{{context.name}}** ({{context.path}}): `{{feature.command}}`
+{{else}}
+```bash
+{{feature.command}}
+```
+{{/if}}
+{{#if feature.autofix}}
+  Auto-fix available: `{{feature.autofix}}`
+{{/if}}
+{{/each}}

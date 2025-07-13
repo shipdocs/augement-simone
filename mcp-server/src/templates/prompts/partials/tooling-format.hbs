@@ -1,0 +1,15 @@
+## Format Code
+
+Apply consistent code formatting:
+{{#each results}}
+{{#if ../results.[1]}}
+- **{{context.name}}** ({{context.path}}): `{{feature.command}}`
+{{else}}
+```bash
+{{feature.command}}
+```
+{{/if}}
+{{#if feature.check}}
+  Check only: `{{feature.check}}`
+{{/if}}
+{{/each}}
