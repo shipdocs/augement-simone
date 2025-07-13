@@ -4,6 +4,9 @@ import { LogActivityParams } from './types.js';
 import { detectActivityType } from './activity-types.js';
 import { normalizeFilePath } from './path-normalizer.js';
 
+// Export the tool definition and handler
+export { activityLoggerTool, handleActivityLoggerTool } from './tool.js';
+
 export class ActivityLogger {
   private db: Database.Database;
   
