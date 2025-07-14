@@ -15,9 +15,6 @@
 
 # Node
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 pnpm-debug.log*
 
 # Build outputs
@@ -27,9 +24,8 @@ coverage/
 # Logs
 *.log
 
-# Simone project-specific
-.simone/
-simone-activity.db
+# Local usage only
+.simone
 
 # Claude specific
 .claude-trace/
@@ -39,12 +35,7 @@ CLAUDE.local.md
 # MCP configuration
 .mcp.json
 
-# Project management
+# Temporary Project management
 TODO.md
 DEVINFO.md
-
-# Temporary files
 repo-reorganization.md
-
-# Local folders
-mixed_notes/
