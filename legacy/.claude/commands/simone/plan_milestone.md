@@ -33,14 +33,17 @@ Creates a new milestone with proper structure, documentation, and project integr
 **Conversational milestone definition:**
 
 If arguments provided:
+
 - "I see you want to create a milestone for: [arguments]"
 - "Let me understand the scope better..."
 
 If no arguments:
+
 - "Let's define your next milestone based on the current project state"
 - "I see you're currently on [current milestone] - what should we focus on next?"
 
 **Interactive questions (adapt based on context):**
+
 - "What's the main goal of this milestone?"
 - "What key deliverables should be completed?"
 - "Are there any specific technical challenges or requirements?"
@@ -52,6 +55,7 @@ If no arguments:
 ## 3 · Determine milestone structure and naming
 
 **Generate milestone details:**
+
 - Determine next milestone number (M##) by scanning existing milestones
 - Create descriptive milestone name from user input
 - Format: `M##_Milestone_Name_Snake_Case`
@@ -59,17 +63,20 @@ If no arguments:
 - Validate naming follows Simone conventions (underscores, no spaces)
 
 **Confirm with user:**
+
 - "I'll create milestone: M##_[Name] - does this sound right?"
 - Allow user to adjust name or numbering if needed
 
 ## 4 · Create milestone directory and meta file
 
 **Create milestone structure:**
+
 - Create directory: `.simone/02_REQUIREMENTS/M##_Milestone_Name/`
 - Copy template from `.simone/99_TEMPLATES/milestone_meta_template.md`
 - Create milestone meta file: `M##_milestone_meta.md`
 
 **Populate milestone meta file:**
+
 - Fill in YAML frontmatter:
   - `milestone_id: M##`
   - `title: [Milestone Name]`
@@ -86,22 +93,26 @@ If no arguments:
 **Interactive document planning:**
 
 Based on milestone scope, suggest needed documents:
+
 - "For this milestone, you'll likely need:"
 - "□ PRD_[Milestone_Name].md - Product requirements"
 - "□ SPECS_[Technical_Area].md - Technical specifications"
 - "□ Any domain-specific documentation"
 
 **Ask user:**
+
 - "Would you like me to create starter templates for these documents now?"
 - "Or would you prefer to create them manually as needed?"
 
 **If user wants templates created:**
+
 - Create basic PRD template with milestone-specific sections
 - Create SPECS template if technical milestone
 - Include proper cross-references between documents
 - **IMPORTANT:** Don't over-engineer - create useful starting points
 
 **If user prefers manual:**
+
 - Note in milestone meta what documents are expected
 - Provide guidance on when/how to create them
 
@@ -131,6 +142,7 @@ Based on milestone scope, suggest needed documents:
 - **CRITICAL:** Milestone should be independently valuable and achievable
 
 **THINK ABOUT**:
+
 - Does this milestone make sense given the current project state?
 - Are the goals realistic and well-scoped?
 - Is the Definition of Done clear enough to know when it's complete?
@@ -170,6 +182,7 @@ Based on milestone scope, suggest needed documents:
 ```
 
 **IMPORTANT NOTES**:
+
 - Keep milestone scope focused and achievable
 - Definition of Done should be measurable
 - Supporting documents can be created as needed

@@ -114,6 +114,7 @@ When configured in a project's `.mcp.json`:
 ## Current Implementation Status
 
 ### Completed
+
 - Basic MCP server with stdio transport
 - Handlebars templating system with hot-reload
 - Activity logging tool with SQLite backend
@@ -121,11 +122,13 @@ When configured in a project's `.mcp.json`:
 - Development tooling setup
 
 ### In Progress
+
 - Task source adapters (GitHub issues, markdown files)
 - Project configuration system
 - Additional MCP tools
 
 ### Planned
+
 - Task management tools
 - Project analytics
 - Integration with more services

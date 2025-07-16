@@ -17,6 +17,7 @@ Initialize the Simone project management framework through an adaptive, interact
 ### 1. Scan and analyze the project
 
 **Detect project characteristics:**
+
 - Check for package.json, requirements.txt, composer.json, etc.
 - Identify project type (Node.js, Python, PHP, etc.)
 - Scan overall project structure
@@ -28,6 +29,7 @@ Initialize the Simone project management framework through an adaptive, interact
 ### 2. Interactive confirmation with user
 
 **Present findings conversationally:**
+
 ```
 I found this to be a [project type] project named [detected name].
 Is this correct? Should I proceed with Simone setup?
@@ -38,16 +40,19 @@ Is this correct? Should I proceed with Simone setup?
 ### 3. Check for existing Simone documents
 
 **Scan .simone/ directory for:**
+
 - Any documents in 01_PROJECT_DOCS/
 - Any milestones in 02_REQUIREMENTS/
 - Any existing sprints or tasks
 - Current manifest status
 
 **Interactive decision:**
+
 - If documents found: "I found existing documents: [list]. Should we work with these or extend them?"
 - If no documents: "No Simone documents found yet. Do you have any existing project documentation you'd like to copy in before we continue?"
 
 **Allow user to:**
+
 - Use existing documents
 - Add new documents
 - Start fresh
@@ -58,6 +63,7 @@ Is this correct? Should I proceed with Simone setup?
 **Based on user's choice:**
 
 **If starting fresh or extending:**
+
 - Perform deep analysis of the codebase
 - Identify key components and architecture patterns
 - Create draft ARCHITECTURE.md based on analysis
@@ -67,6 +73,7 @@ Is this correct? Should I proceed with Simone setup?
   - "Any important constraints or requirements?"
 
 **If using existing docs:**
+
 - Import and adapt existing documentation
 - Fill in any Simone-specific sections
 - Ensure compatibility with framework structure
@@ -76,10 +83,12 @@ Is this correct? Should I proceed with Simone setup?
 ### 5. Create first milestone for Simone
 
 **Determine appropriate first milestone:**
+
 - If new project: Start with setup/foundation milestone
 - If existing project: Identify current phase and create appropriate milestone
 
 **Interactive milestone creation:**
+
 - "Based on the project state, I suggest creating milestone: [name]"
 - "What would you like to focus on in this milestone?"
 - Create milestone structure with initial requirements
@@ -88,6 +97,7 @@ Is this correct? Should I proceed with Simone setup?
 ### 6. Generate project manifest
 
 **Automatically generate manifest using:**
+
 - Information gathered during setup
 - Created/imported documentation
 - Current milestone details
@@ -98,6 +108,7 @@ Is this correct? Should I proceed with Simone setup?
 ### 7. Provide next steps
 
 **Customized guidance based on setup:**
+
 ```
 ✅ Simone initialized for [project name]!
 

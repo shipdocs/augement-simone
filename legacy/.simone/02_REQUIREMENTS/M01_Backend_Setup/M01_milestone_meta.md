@@ -8,6 +8,7 @@ last_updated: 2023-07-10
 # Milestone: Backend Setup (EXAMPLE)
 
 ## Goals
+
 This milestone focuses on establishing the core backend infrastructure for the project, including:
 
 1. Setting up the initial project structure
@@ -16,11 +17,13 @@ This milestone focuses on establishing the core backend infrastructure for the p
 4. Establishing authentication and authorization systems
 
 ## Key Documents
+
 - [Product Requirements Document](./PRD_Backend_Setup.md)
 - [API Specifications V1](./SPECS_API_V1.md)
 - [Auth Flow Update Amendment](./PRD_AMEND_01_Auth_Flow_Update.md)
 
 ## Definition of Done (DoD)
+
 This milestone will be considered complete when:
 
 - The backend server can be started and responds to API requests
@@ -30,6 +33,7 @@ This milestone will be considered complete when:
 - Integration tests are passing for all endpoints
 
 ## Notes / Context
+
 This is an example milestone document to demonstrate how milestones might be structured in a project using the Simone framework. The backend infrastructure established here would be the foundation for a typical web application.
 
 ## Related Sprints

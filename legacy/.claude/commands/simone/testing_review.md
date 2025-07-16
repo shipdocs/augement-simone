@@ -5,6 +5,7 @@ Analyzes test implementation against the project's testing strategy to ensure te
 ## Prerequisites Check
 
 **FIRST**, check if a testing strategy document exists:
+
 - CHECK for `.simone/01_PROJECT_DOCS/TESTING_STRATEGY.md`
 - If NOT found, inform the user: "No testing strategy document found. Would you like me to help create one, or proceed with a general test quality review?"
 - If user wants to proceed without strategy, adapt the review to focus on general test quality principles
@@ -26,6 +27,7 @@ Follow step by step and adhere closely to the following instructions for each st
 ### 1. Load testing strategy document (or define review criteria)
 
 **Option A - Strategy document exists:**
+
 - LOAD `.simone/01_PROJECT_DOCS/TESTING_STRATEGY.md`
 - EXTRACT key principles and priorities
 - IDENTIFY what should and shouldn't be tested
@@ -34,6 +36,7 @@ Follow step by step and adhere closely to the following instructions for each st
 
 **Option B - No strategy document:**
 Use general best practices as review criteria:
+
 - Tests should focus on behavior, not implementation
 - Critical paths must have coverage
 - Tests should be maintainable and clear
@@ -71,11 +74,13 @@ Use general best practices as review criteria:
 **SEARCH** for tests that don't provide value:
 
 **If using strategy document:**
+
 - Tests for areas marked as "skip" in strategy
 - Tests outside the defined scope
 - Over-specified tests per strategy guidelines
 
 **If using general principles:**
+
 - Over-engineered tests for simple functionality
 - Tests that break on every refactor
 - Edge case tests for non-critical features
@@ -89,10 +94,12 @@ Use general best practices as review criteria:
 **VERIFY** that essential functionality has appropriate tests:
 
 **If using strategy document:**
+
 - CHECK coverage of high-priority areas defined in strategy
 - VERIFY strategy-specific requirements are tested
 
 **For all reviews:**
+
 - IDENTIFY gaps in critical path testing
 - CHECK authentication/authorization if applicable
 - VERIFY error handling for important operations
@@ -106,12 +113,14 @@ Use general best practices as review criteria:
 **CREATE** specific, actionable recommendations:
 
 For each finding:
+
 - SPECIFY the test file and function
 - EXPLAIN why it needs modification
 - SUGGEST the specific change (remove, simplify, add)
 - PROVIDE example of the improved approach if helpful
 
 **Format:**
+
 ```
 File: tests/test_example.py::test_function_name
 Issue: [What's wrong]
@@ -127,6 +136,7 @@ Reason: [Why this aligns with strategy]
 - Create report in `.simone/10_STATE_OF_PROJECT/YYYY-MM-DD-HH-MM-test-alignment.md`
 
 **Report structure:**
+
 ```markdown
 # Test-Strategy Alignment Review - [YYYY-MM-DD HH:MM]
 

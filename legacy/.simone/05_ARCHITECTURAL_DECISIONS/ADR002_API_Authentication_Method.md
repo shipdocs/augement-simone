@@ -15,6 +15,7 @@ Our API requires a secure authentication mechanism to identify users, protect re
 **Note: This is an example Architecture Decision Record to demonstrate how ADRs might be structured in the Simone framework.**
 
 Several authentication strategies were considered:
+
 - Session-based authentication with cookies
 - JWT (JSON Web Tokens)
 - OAuth 2.0
@@ -44,6 +45,7 @@ Our decision was based on the following factors:
 7. **Industry standard**: JWT is widely adopted, well-documented, and has strong library support in our tech stack.
 
 We acknowledged some concerns with JWT:
+
 - Token revocation requires additional mechanisms (blacklisting or short expiration with refresh tokens)
 - Token size can be larger than simple session IDs
 - Token payload is encoded, not encrypted (sensitive data shouldn't be included)
@@ -53,11 +55,13 @@ We acknowledged some concerns with JWT:
 ### Session-based Authentication
 
 Pros:
+
 - Well-established, traditional approach
 - Easy to implement and understand
 - Simple to revoke (delete the session)
 
 Cons:
+
 - Requires session storage on the server
 - Can be problematic in distributed/scaled environments
 - Typically relies on cookies which have cross-domain limitations
@@ -65,11 +69,13 @@ Cons:
 ### API Keys
 
 Pros:
+
 - Very simple to implement
 - Good for service-to-service communication
 - No expiration management needed
 
 Cons:
+
 - Not suitable for user authentication
 - Limited granularity for permissions
 - No built-in standard for claims or payload

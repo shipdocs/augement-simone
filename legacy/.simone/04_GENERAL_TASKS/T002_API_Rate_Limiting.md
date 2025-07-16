@@ -8,11 +8,13 @@ last_updated: 2023-07-25T09:15:00Z
 # Task: API Rate Limiting (EXAMPLE)
 
 ## Description
+
 Implement rate limiting for the API to prevent abuse and ensure fair usage across all clients. This task involves adding middleware to track and limit requests based on client IP or API key.
 
 **Note: This is an example general task to demonstrate how non-sprint-specific tasks might be structured in the Simone framework.**
 
 ## Goal / Objectives
+
 - Protect API endpoints from abuse and excessive requests
 - Implement configurable rate limits based on client authentication
 - Track usage statistics for billing and monitoring
@@ -20,6 +22,7 @@ Implement rate limiting for the API to prevent abuse and ensure fair usage acros
 - Ensure minimal performance impact on normal API operation
 
 ## Acceptance Criteria
+
 - [ ] Rate limiting is applied to all public API endpoints
 - [ ] Different rate limits are configurable based on client tier/authentication
 - [ ] Response headers include rate limit information (limit, remaining, reset)
@@ -29,6 +32,7 @@ Implement rate limiting for the API to prevent abuse and ensure fair usage acros
 - [ ] Usage statistics are collected for monitoring and analysis
 
 ## Subtasks
+
 - [x] Research rate limiting strategies and best practices
 - [x] Evaluate libraries (express-rate-limit, rate-limiter-flexible, etc.)
 - [x] Design rate limit tiers for different client types
@@ -40,6 +44,7 @@ Implement rate limiting for the API to prevent abuse and ensure fair usage acros
 - [ ] Document rate limiting behavior for API consumers
 
 ## Output Log
+
 *(This section is populated as work progresses on the task)*
 
 [2023-07-23 10:30:00] Started task

@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2025-01-13
 
 ### Added
+
 - Initial MCP server implementation with stdio transport
 - Handlebars-based templating system with hot-reloading
 - Multi-context project configuration support
@@ -23,10 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Development tools: ESLint, Prettier, Vitest, Husky
 
 ### Changed
+
 - Complete architectural rewrite from directory-based commands to MCP protocol
 - New codebase structure with modular design
 
 ### Notes
+
 - This is the first release of the MCP server implementation
 - Currently in development on the `feature/mcp-server` branch
 - Not yet published to npm

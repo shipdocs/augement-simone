@@ -56,17 +56,20 @@ docs/architecture/
 Based on analysis, determine what diagrams need work:
 
 **For CREATE action:**
+
 - System context diagram showing external interactions
 - Module overview for internal architecture
 - Class diagrams for key subsystems
 - Data flow diagrams if applicable
 
 **For UPDATE action:**
+
 - Compare existing diagrams with current code
 - Identify new components, removed elements, changed relationships
 - Mark diagrams that need modification
 
 **For MAINTAIN action:**
+
 - Review all diagrams for accuracy
 - Check naming consistency
 - Verify relationships and dependencies
@@ -75,6 +78,7 @@ Based on analysis, determine what diagrams need work:
 ## 4 · Create or update mermaid diagram code
 
 **Example System Context Diagram:**
+
 ```mermaid
 graph TB
     subgraph "External Systems"
@@ -97,6 +101,7 @@ graph TB
 ```
 
 **Example Class Diagram:**
+
 ```mermaid
 classDiagram
     class DataManager {
@@ -114,6 +119,7 @@ classDiagram
 ```
 
 **Best Practices:**
+
 - Keep diagrams focused and readable
 - Use consistent naming conventions
 - Group related components
@@ -123,6 +129,7 @@ classDiagram
 ## 5 · Validate diagram syntax and rendering
 
 **Validation checks:**
+
 - Ensure mermaid syntax is correct
 - Preview diagrams in markdown viewer
 - Check that all components are represented
@@ -130,6 +137,7 @@ classDiagram
 - Confirm layout is clear and logical
 
 **Common issues to check:**
+
 - Missing semicolons or brackets
 - Incorrect arrow syntax
 - Undefined node references
@@ -139,12 +147,14 @@ classDiagram
 ## 6 · Update cross-references and documentation
 
 **Update README.md in `/docs/architecture/`:**
+
 - Add links to all diagram files
 - Include brief description of each diagram
 - Provide navigation structure
 - Add update timestamp
 
 **Example README structure:**
+
 ```markdown
 # Architecture Documentation
 
@@ -165,18 +175,21 @@ Last Updated: [DATE]
 **Consistent styling guidelines:**
 
 **Color scheme:**
+
 - External systems: `#E8F4F8`
 - Core components: `#B8E0D2`
 - Services: `#D4E8D9`
 - Data stores: `#F0E6D2`
 
 **Node naming:**
+
 - Use PascalCase for classes
 - Use UPPER_CASE for systems
 - Use descriptive names
 - Avoid abbreviations
 
 **Layout principles:**
+
 - Top-to-bottom for hierarchies
 - Left-to-right for workflows
 - Group related components
@@ -215,6 +228,7 @@ Next Steps:
 ```
 
 **Maintenance recommendations:**
+
 - Update diagrams with each major feature
 - Review quarterly for accuracy
 - Add new diagrams for new subsystems

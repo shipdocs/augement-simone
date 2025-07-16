@@ -9,14 +9,17 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ## Setup & Context Commands
 
 ### 🚀 `/project:simone:initialize`
+
 **Purpose**: Initialize Simone for a new or existing project
 
-**Usage**: 
+**Usage**:
+
 ```
 /project:simone:initialize
 ```
 
 **What it does**:
+
 1. Scans and analyzes your project
 2. Asks for confirmation about project type
 3. Checks for existing Simone documents
@@ -29,14 +32,17 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ---
 
 ### 🧠 `/project:simone:prime`
+
 **Purpose**: Load project context at the start of a coding session
 
 **Usage**:
+
 ```
 /project:simone:prime
 ```
 
 **What it does**:
+
 - Reads project manifest
 - Loads current milestone and sprint info
 - Identifies active tasks
@@ -47,14 +53,17 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ## Planning Commands
 
 ### 📅 `/project:simone:create_sprints_from_milestone`
+
 **Purpose**: Break down a milestone into manageable sprints
 
 **Usage**:
+
 ```
 /project:simone:create_sprints_from_milestone 001_MVP_FOUNDATION
 ```
 
 **What it does**:
+
 1. Analyzes milestone requirements
 2. Groups related requirements into ~1 week sprints
 3. Creates sprint folders and META files
@@ -65,9 +74,11 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ---
 
 ### 📋 `/project:simone:create_sprint_tasks`
+
 **Purpose**: Create detailed task breakdowns for a sprint
 
 **Usage**:
+
 ```
 /project:simone:create_sprint_tasks S01
 # or for specific sprint:
@@ -75,6 +86,7 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ```
 
 **What it does**:
+
 1. Analyzes sprint requirements
 2. Breaks them into specific, actionable tasks
 3. Creates task files with clear objectives
@@ -85,15 +97,18 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ---
 
 ### ✏️ `/project:simone:create_general_task`
+
 **Purpose**: Create standalone tasks not tied to sprints
 
 **Usage**:
+
 ```
 /project:simone:create_general_task
 # Then describe your task when prompted
 ```
 
 **Example tasks**:
+
 - "Fix memory leak in physics engine"
 - "Update documentation for API changes"
 - "Refactor database connection pooling"
@@ -103,9 +118,11 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ## Development Commands
 
 ### 💻 `/project:simone:do_task`
+
 **Purpose**: Execute a specific task
 
 **Usage**:
+
 ```
 /project:simone:do_task
 # Lists available tasks and prompts for selection
@@ -115,6 +132,7 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ```
 
 **What it does**:
+
 1. Reads task requirements
 2. Implements the solution
 3. Runs tests if applicable
@@ -126,9 +144,11 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ---
 
 ### 📝 `/project:simone:commit`
+
 **Purpose**: Create well-structured git commits
 
 **Usage**:
+
 ```
 /project:simone:commit
 # Reviews changes and creates commit
@@ -141,6 +161,7 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ```
 
 **What it does**:
+
 1. Analyzes changes made
 2. Groups related changes
 3. Creates meaningful commit messages
@@ -152,9 +173,11 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ---
 
 ### 🧪 `/project:simone:test`
+
 **Purpose**: Run tests and fix common issues
 
 **Usage**:
+
 ```
 /project:simone:test
 # Runs all tests
@@ -164,6 +187,7 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ```
 
 **What it does**:
+
 1. Identifies test commands from package.json
 2. Runs appropriate tests
 3. Fixes common issues (missing deps, configs)
@@ -174,9 +198,11 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ## Review Commands
 
 ### 🔍 `/project:simone:code_review`
+
 **Purpose**: Review code against specifications
 
 **Usage**:
+
 ```
 /project:simone:code_review
 # Reviews uncommitted changes
@@ -186,6 +212,7 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ```
 
 **What it does**:
+
 1. Checks code against requirements
 2. Verifies patterns and conventions
 3. Identifies bugs and issues
@@ -197,14 +224,17 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ---
 
 ### 📊 `/project:simone:project_review`
+
 **Purpose**: Comprehensive project health check
 
 **Usage**:
+
 ```
 /project:simone:project_review
 ```
 
 **What it does**:
+
 1. Reviews overall architecture
 2. Checks technical debt
 3. Analyzes progress vs. timeline
@@ -216,14 +246,17 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ---
 
 ### 🧪 `/project:simone:testing_review`
+
 **Purpose**: Analyze test coverage and quality
 
 **Usage**:
+
 ```
 /project:simone:testing_review
 ```
 
 **What it does**:
+
 1. Reviews test coverage
 2. Identifies missing test cases
 3. Checks test quality
@@ -234,15 +267,18 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ---
 
 ### 💬 `/project:simone:discuss_review`
+
 **Purpose**: Technical discussion about review findings
 
 **Usage**:
+
 ```
 /project:simone:discuss_review
 # After running another review command
 ```
 
 **What it does**:
+
 - Provides detailed explanations
 - Discusses trade-offs
 - Suggests solutions
@@ -253,9 +289,11 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ---
 
 ### 📊 `/project:simone:mermaid`
+
 **Purpose**: Create and maintain architecture diagrams
 
 **Usage**:
+
 ```
 /project:simone:mermaid CREATE
 # Generate new architecture diagrams
@@ -271,6 +309,7 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ```
 
 **What it does**:
+
 1. Analyzes project structure
 2. Creates/updates mermaid diagrams
 3. Generates architecture documentation in `/docs/architecture/`
@@ -282,9 +321,11 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ## Automation Commands
 
 ### 🚀 `/project:simone:yolo`
+
 **Purpose**: Autonomous task execution
 
 **Usage**:
+
 ```
 /project:simone:yolo
 # Works through all open tasks
@@ -294,6 +335,7 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ```
 
 **What it does**:
+
 1. Identifies open tasks
 2. Executes them in order
 3. Handles dependencies
@@ -301,6 +343,7 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 5. Updates progress
 
 **Safety features**:
+
 - Won't modify schemas without confirmation
 - Skips dangerous operations
 - Maintains code quality
@@ -311,6 +354,7 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ## Best Practices
 
 ### Daily Workflow
+
 ```bash
 # Start of day
 /project:simone:prime
@@ -325,6 +369,7 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ```
 
 ### Sprint Workflow
+
 ```bash
 # Sprint planning
 /project:simone:create_sprint_tasks S02
@@ -339,6 +384,7 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ```
 
 ### Quick Fixes
+
 ```bash
 # Bug fix workflow
 /project:simone:create_general_task
@@ -359,6 +405,7 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 ## Command Safety
 
 Simone commands include safety features:
+
 - Won't delete critical files
 - Asks before schema changes
 - Validates changes against specs
@@ -368,6 +415,7 @@ Simone commands include safety features:
 ## Getting Help
 
 If you need help with a command:
+
 1. Run the command without arguments for usage info
 2. Check this guide
 3. Look at task examples in `.simone/`

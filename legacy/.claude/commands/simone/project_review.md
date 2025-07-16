@@ -95,7 +95,9 @@ If empty, perform full project review. Otherwise interpret <$ARGUMENTS> to ident
 - ASSESS if current sprint focus aligns with milestone goals
 
 ### 5. Analyze codebase architecture and structure
+
 #
+
 **USE PARALLEL AGENTS** to follow these steps:
 
 - EXAMINE overall project structure and organization

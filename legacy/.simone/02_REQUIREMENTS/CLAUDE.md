@@ -1,10 +1,13 @@
 # CLAUDE.md - Requirements Folder Structure Guide
 
 ## Overview
+
 This folder contains all project milestones and their associated requirements documentation. Each milestone represents a major project phase or feature set.
 
 ## Milestone Naming Convention
+
 **CRITICAL**: Milestone folders MUST follow this exact pattern:
+
 ```
 M##_Milestone_Name/
 ```
@@ -13,7 +16,8 @@ M##_Milestone_Name/
 - `_` - Single underscore separator
 - `Milestone_Name` - Descriptive name using underscores for spaces
 
-### Examples:
+### Examples
+
 - ✅ `M01_Backend_Setup/`
 - ✅ `M02_Frontend_UI/`
 - ✅ `M03_Authentication_System/`
@@ -22,29 +26,35 @@ M##_Milestone_Name/
 - ❌ `Backend_Setup/` (missing M## prefix)
 
 ## Milestone Structure
+
 Each milestone folder MUST contain:
 
 ### 1. Milestone Meta File (REQUIRED)
+
 - **Name**: `M##_milestone_meta.md`
 - **Purpose**: Contains milestone metadata and overview
 - **Location**: Root of milestone folder
 
 ### 2. Product Requirements Documents (PRD)
+
 - **Pattern**: `PRD_*.md`
 - **Examples**: `PRD_Backend_Setup.md`, `PRD_User_Authentication.md`
 - **Purpose**: Define product requirements and user stories
 
 ### 3. Technical Specifications
+
 - **Pattern**: `SPECS_*.md`
 - **Examples**: `SPECS_API_V1.md`, `SPECS_Database_Schema.md`
 - **Purpose**: Technical implementation details
 
 ### 4. Amendments (as needed)
+
 - **Pattern**: `PRD_AMEND_##_*.md`
 - **Examples**: `PRD_AMEND_01_Additional_Endpoints.md`
 - **Purpose**: Document changes to original requirements
 
 ## Example Structure
+
 ```
 02_REQUIREMENTS/
 ├── M01_Backend_Setup/
@@ -71,6 +81,7 @@ Each milestone folder MUST contain:
 5. **Maintain sequential numbering** - don't skip milestone numbers
 
 ## Common Mistakes to Avoid
+
 - Creating milestones without the M## prefix
 - Using hyphens instead of underscores
 - Forgetting the milestone meta file

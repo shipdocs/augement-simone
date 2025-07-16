@@ -55,6 +55,7 @@ With the identified Scope use `git diff` (on default: `git diff HEAD~1`) to find
    - PHP: If `phpcs.xml` or `.php-cs-fixer.php`: Run appropriate tool
 
 **Execute detected tools:**
+
 - RUN each detected tool
 - For auto-fixable issues: Apply fixes if safe (formatting only)
 - For non-fixable issues: Note them in the findings
@@ -62,6 +63,7 @@ With the identified Scope use `git diff` (on default: `git diff HEAD~1`) to find
 **If no linting tools found:** Skip this step (not all projects use linters)
 
 **Critical Issues (that should influence FAIL verdict):**
+
 - Type errors that would cause runtime failures
 - Syntax errors
 - Critical security issues (if detected by linter)
@@ -112,6 +114,7 @@ With the identified Scope use `git diff` (on default: `git diff HEAD~1`) to find
 - Find the task file in `.simone/03_SPRINTS/` or `.simone/04_GENERAL_TASKS/` based on the scope
 - Append the review results to the existing Output Log with timestamp
 - Output Format:
+
   ```
   [YYYY-MM-DD HH:MM]: Code Review - PASS/FAIL
   Result: **FAIL/PASS** Your final decision on if it's a PASS or a FAIL.
@@ -120,4 +123,5 @@ With the identified Scope use `git diff` (on default: `git diff HEAD~1`) to find
   **Summary:** Short summary on what is wrong or not.
   **Recommendation:** Your personal recommendation on further steps.
   ```
+
 - Also output a brief result summary to the console for immediate feedback

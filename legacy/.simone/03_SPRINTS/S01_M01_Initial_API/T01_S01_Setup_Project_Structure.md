@@ -9,11 +9,13 @@ last_updated: 2023-07-15
 # Task: Setup Project Structure (EXAMPLE)
 
 ## Description
+
 Set up the initial project structure for the backend API service, including directory organization, dependency installation, and basic configuration.
 
 **Note: This is an example task to demonstrate the structure of a task in the Simone framework.**
 
 ## Goal / Objectives
+
 - Create a well-organized, scalable project structure
 - Set up the Express.js application with middleware
 - Configure MongoDB connection
@@ -22,6 +24,7 @@ Set up the initial project structure for the backend API service, including dire
 - Initialize logging system
 
 ## Acceptance Criteria
+
 - [ ] Project structure follows MVC pattern with clear separation of concerns
 - [ ] Express application is set up with necessary middleware (CORS, body-parser, etc.)
 - [ ] MongoDB connection is configured with error handling
@@ -32,6 +35,7 @@ Set up the initial project structure for the backend API service, including dire
 - [ ] Initial tests pass
 
 ## Subtasks
+
 - [ ] Initialize Node.js project with package.json
 - [ ] Install core dependencies (express, mongoose, dotenv, etc.)
 - [ ] Create directory structure for routes, controllers, models, middleware

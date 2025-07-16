@@ -23,12 +23,14 @@ This amendment updates the authentication flow requirements to incorporate OAuth
 **Updated FR-2.1 (User model):**
 
 Add the following fields to the User model:
+
 - `oauth_provider`: string (null, 'google', 'github')
 - `oauth_id`: string (provider-specific user ID)
 
 ### API Endpoints (FR-3)
 
 **Added Endpoints to FR-3.1:**
+
 - GET /api/auth/oauth/google (Redirect URL for Google OAuth)
 - GET /api/auth/oauth/github (Redirect URL for GitHub OAuth)
 - GET /api/auth/oauth/callback (OAuth provider callback)
@@ -36,9 +38,11 @@ Add the following fields to the User model:
 ## Changes to Non-Functional Requirements
 
 **Updated NFR-5:**
+
 - NFR-5: The system shall implement JWT-based authentication with support for OAuth 2.0 providers
 
 **Added NFR:**
+
 - NFR-9: The system shall securely store OAuth provider credentials in environment variables
 
 ## Implementation Impact

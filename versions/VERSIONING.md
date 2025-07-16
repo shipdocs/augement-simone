@@ -51,23 +51,27 @@ node scripts/version-manager.js migrate-tags
 #### For NPM Packages (MCP Server, hello-simone)
 
 1. Update version in the component's `package.json`:
+
    ```bash
    cd mcp-server
    npm version patch  # or minor, major
    ```
 
 2. Sync the central version file:
+
    ```bash
    node scripts/version-manager.js sync
    ```
 
 3. Commit changes:
+
    ```bash
    git add .
    git commit -m "chore(mcp): bump version to x.y.z"
    ```
 
 4. Create and push tag:
+
    ```bash
    node scripts/version-manager.js tag mcp-server
    git push origin mcp/vx.y.z
@@ -81,6 +85,7 @@ node scripts/version-manager.js migrate-tags
 2. Update `legacy/CHANGELOG.md`
 3. Commit changes
 4. Create tag:
+
    ```bash
    node scripts/version-manager.js tag legacy
    git push origin legacy/vx.y.z

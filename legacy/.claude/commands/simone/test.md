@@ -13,7 +13,7 @@ Follow these instructions from top to bottom.
 
 ## 1 · Execute test suite
 
-### First, detect the project's test runner:
+### First, detect the project's test runner
 
 1. **Python projects:**
    - If `pyproject.toml` exists with `[tool.poetry]`: Try `poetry run pytest`
@@ -33,7 +33,7 @@ Follow these instructions from top to bottom.
    - Ruby: `bundle exec rspec` or `rake test`
    - PHP: `composer test` or `phpunit`
 
-### Execute the detected test command:
+### Execute the detected test command
 
 - RUN the appropriate test command
 - CAPTURE full output including any errors
@@ -45,21 +45,24 @@ Follow these instructions from top to bottom.
 
 Check for common issues in this order:
 
-### Language-specific issues:
+### Language-specific issues
 
 **Python:**
-- Missing __init__.py files (import errors, tests not discovered)
+
+- Missing **init**.py files (import errors, tests not discovered)
 - Import path problems
 - Fixture issues (pytest)
 - Virtual environment problems
 
 **JavaScript/TypeScript:**
+
 - Module resolution errors
 - Missing dependencies in node_modules
 - Jest/Vitest configuration issues
 - TypeScript compilation errors
 
 **Common across languages:**
+
 - Environment variable issues (missing config)
 - Database/external service connection errors
 - File path problems (absolute vs relative)
@@ -69,22 +72,26 @@ Check for common issues in this order:
 
 **ONLY** fix these specific issues automatically:**
 
-### Python-specific fixes:
+### Python-specific fixes
+
 - CREATE empty `__init__.py` files where needed
 - FIX simple import path issues
 - ADD missing test directory to Python path if needed
 
-### JavaScript/TypeScript fixes:
+### JavaScript/TypeScript fixes
+
 - RUN `npm install` if node_modules missing
 - FIX simple module resolution in jest.config.js
 - CREATE missing test setup files
 
-### General fixes:
+### General fixes
+
 - CREATE missing test directories
 - FIX file permissions if possible
 - IDENTIFY missing env vars and inform user
 
 **DO NOT** fix:
+
 - Actual test logic failures
 - Business logic bugs
 - Complex configuration issues

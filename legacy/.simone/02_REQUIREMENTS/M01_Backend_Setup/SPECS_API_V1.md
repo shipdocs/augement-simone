@@ -29,6 +29,7 @@ All API endpoints follow a consistent error response format:
 ```
 
 Common error codes:
+
 - `UNAUTHORIZED`: Authentication required or invalid
 - `FORBIDDEN`: Insufficient permissions
 - `NOT_FOUND`: Resource not found
@@ -44,6 +45,7 @@ Common error codes:
 Register a new user.
 
 **Request:**
+
 ```json
 {
   "email": "user@example.com",
@@ -53,6 +55,7 @@ Register a new user.
 ```
 
 **Response (201 Created):**
+
 ```json
 {
   "user": {
@@ -70,6 +73,7 @@ Register a new user.
 Authenticate a user.
 
 **Request:**
+
 ```json
 {
   "email": "user@example.com",
@@ -78,6 +82,7 @@ Authenticate a user.
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "user": {
@@ -97,6 +102,7 @@ Authenticate a user.
 Get current authenticated user profile.
 
 **Response (200 OK):**
+
 ```json
 {
   "id": "user123",
@@ -113,6 +119,7 @@ Get current authenticated user profile.
 Update current user profile.
 
 **Request:**
+
 ```json
 {
   "name": "John Smith",
@@ -121,6 +128,7 @@ Update current user profile.
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "id": "user123",
@@ -140,11 +148,13 @@ Update current user profile.
 List all projects accessible to the authenticated user.
 
 **Query Parameters:**
+
 - `status` (optional): Filter by status (active, archived)
 - `limit` (optional): Maximum number of results (default: 20)
 - `offset` (optional): Pagination offset (default: 0)
 
 **Response (200 OK):**
+
 ```json
 {
   "total": 42,
@@ -170,6 +180,7 @@ List all projects accessible to the authenticated user.
 Create a new project.
 
 **Request:**
+
 ```json
 {
   "title": "New Project",
@@ -178,6 +189,7 @@ Create a new project.
 ```
 
 **Response (201 Created):**
+
 ```json
 {
   "id": "proj456",
@@ -199,12 +211,14 @@ Create a new project.
 List tasks for a specific project.
 
 **Query Parameters:**
+
 - `status` (optional): Filter by status (todo, in_progress, done)
 - `assigned_to` (optional): Filter by assigned user ID
 - `limit` (optional): Maximum number of results (default: 50)
 - `offset` (optional): Pagination offset (default: 0)
 
 **Response (200 OK):**
+
 ```json
 {
   "total": 24,

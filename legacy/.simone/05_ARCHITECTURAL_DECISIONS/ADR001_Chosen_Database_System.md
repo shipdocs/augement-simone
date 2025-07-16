@@ -15,6 +15,7 @@ The backend system needs a database to store user accounts, projects, tasks, and
 **Note: This is an example Architecture Decision Record to demonstrate how ADRs might be structured in the Simone framework.**
 
 We evaluated several options including:
+
 - Relational databases (PostgreSQL, MySQL)
 - Document databases (MongoDB, CouchDB)
 - Key-value stores (Redis, DynamoDB)
@@ -40,6 +41,7 @@ The decision was based on the following factors:
 6. **Ecosystem**: The robust Node.js ecosystem around MongoDB with libraries like Mongoose provides tools for validation, middleware, and other features that align with our development approach.
 
 Some concerns were raised about:
+
 - Lack of ACID transactions across multiple documents (though MongoDB does support multi-document transactions now)
 - Potential for data duplication in document model
 
@@ -50,11 +52,13 @@ We determined these concerns were manageable for our use case and outweighed by 
 ### PostgreSQL
 
 Pros:
+
 - Mature, proven technology with strong ACID compliance
 - Excellent for complex relational data and joins
 - Support for JSON data types provides some schema flexibility
 
 Cons:
+
 - Schema migrations could slow development velocity
 - Object-relational mapping adds complexity
 - Less natural fit for our document-oriented data model
@@ -62,11 +66,13 @@ Cons:
 ### DynamoDB
 
 Pros:
+
 - Fully managed service with automatic scaling
 - Predictable performance with guaranteed low-latency
 - Strong consistency options
 
 Cons:
+
 - Less flexible query capabilities
 - AWS lock-in
 - Potentially higher cost for our access patterns

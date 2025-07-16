@@ -17,6 +17,7 @@ npm install -g @helmi/simone-mcp
 ```
 
 Or use directly with npx:
+
 ```bash
 npx @helmi/simone-mcp
 ```
