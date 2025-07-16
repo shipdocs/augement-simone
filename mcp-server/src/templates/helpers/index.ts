@@ -3,4 +3,4 @@
  * @description Exports all custom Handlebars helpers for the templating system
  */
 
-export * from './feature.js';
+// Currently no custom helpers needed - using standard Handlebars helpers
