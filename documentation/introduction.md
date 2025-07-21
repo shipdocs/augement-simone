@@ -80,5 +80,5 @@ Instead of expecting the AI to retain all project knowledge across long interact
 
 Ready to enhance your AI-assisted development? Choose your path:
 
-*   [**Legacy System Installation**](/docs/getting-started/legacy-installation) - Start with the stable, production-ready version.
-*   [**MCP Server Installation**](/docs/getting-started/mcp-installation) - Explore the cutting-edge, in-development future of Simone.
+*   [**Legacy System Installation**](/getting-started/legacy-installation) - Start with the stable, production-ready version.
+*   [**MCP Server Installation**](/getting-started/mcp-installation) - Explore the cutting-edge, in-development future of Simone.
