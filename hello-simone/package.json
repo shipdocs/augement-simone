@@ -4,7 +4,7 @@
   "description": "Installer for Simone - AI-powered project management system",
   "type": "module",
   "bin": {
-    "hello-simone": "./index.js"
+    "hello-simone": "index.js"
   },
   "files": [
     "index.js",
@@ -29,7 +29,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Helmi/claude-simone.git",
+    "url": "git+https://github.com/Helmi/claude-simone.git",
     "directory": "hello-simone"
   },
   "engines": {
