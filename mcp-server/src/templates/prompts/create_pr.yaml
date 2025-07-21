@@ -1,0 +1,119 @@
+name: create_pr
+description: Create a pull request from current branch with issue linkage
+arguments:
+  - name: issue
+    description: Issue number this PR addresses
+    required: false
+  - name: base_branch
+    description: Target branch for the PR (defaults to main/master)
+    required: false
+template: |
+  # Create Pull Request
+  
+  **IMPORTANT:** Follow from Top to Bottom - don't skip anything!
+  
+  **CREATE A TODO LIST** with exactly these 5 items:
+  
+  1. Verify branch and changes
+  2. Link to issue and gather context
+  3. Summarize changes made
+  4. Prepare PR description
+  5. Create the pull request
+  
+  ## 1 · Verify branch and changes
+  
+  Check current branch and changes:
+  ```bash
+  git branch --show-current
+  git status
+  git log --oneline -5
+  ```
+  
+  Ensure:
+  - You're on a feature/bugfix branch (not main/master)
+  - All changes are committed
+  - Branch is pushed to remote
+  
+  If not pushed yet:
+  ```bash
+  git push -u origin $(git branch --show-current)
+  ```
+  
+  ## 2 · Link to issue and gather context
+  
+  {{#if issue}}
+  {{> github}}
+  
+  Fetch issue #{{issue}} details to understand:
+  - Original requirements
+  - Acceptance criteria
+  - Any design decisions discussed
+  {{else}}
+  If this PR addresses an issue, identify the issue number from:
+  - Branch name (often contains issue number)
+  - Recent commit messages
+  - Ask the user if unclear
+  {{/if}}
+  
+  ## 3 · Summarize changes made
+  
+  Review the changes in this branch:
+  ```bash
+  git diff {{#if base_branch}}{{base_branch}}{{else}}$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'){{/if}}...HEAD --stat
+  ```
+  
+  Analyze:
+  - What files were changed and why
+  - Key implementation decisions
+  - Any challenges encountered
+  - Edge cases handled
+  - Tests added or updated
+  
+  ## 4 · Prepare PR description
+  
+  Structure the PR description with these sections:
+  
+  ```markdown
+  ## Summary
+  [Brief overview of what this PR accomplishes]
+  
+  {{#if issue}}
+  Closes #{{issue}}
+  {{/if}}
+  
+  ## Changes
+  - [Key change 1]
+  - [Key change 2]
+  - [Additional changes...]
+  
+  ## Implementation Notes
+  [Any important decisions, trade-offs, or explanations]
+  
+  ## Testing
+  - [ ] [How the changes were tested]
+  - [ ] [Edge cases considered]
+  - [ ] [Any manual testing steps for reviewers]
+  
+  ## Screenshots
+  [If UI changes, include before/after screenshots]
+  ```
+  
+  ## 5 · Create the pull request
+  
+  {{> github}}
+  
+  Create the PR with:
+  - Title: "[Type]: Brief description{{#if issue}} (#{{issue}}){{/if}}"
+  - Body: [The prepared description from step 4]
+  - Base branch: {{#if base_branch}}{{base_branch}}{{else}}default branch{{/if}}
+  
+  After creating, consider:
+  - Adding reviewers if you know who should review
+  - Adding labels that match the issue type
+  - Linking to any related PRs
+  
+  ✅ **Result**: Pull request created successfully
+  
+  🔎 **Scope**: PR from `[branch-name]` to `{{#if base_branch}}{{base_branch}}{{else}}[default-branch]{{/if}}` with [N] files changed
+  
+  💬 **Summary**: Created pull request{{#if issue}} for issue #{{issue}}{{/if}} containing [brief description of changes]. The PR includes comprehensive documentation of changes, implementation decisions, and testing performed.
