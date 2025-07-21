@@ -2,8 +2,6 @@
 
 **IMPORTANT:** This repository contains both the legacy Simone system and the new MCP server implementation.
 
-Include @CLAUDE.local.md
-
 ## Repository Structure
 
 This repository has been reorganized to contain three components:
@@ -45,3 +43,8 @@ You have access to the `log_activity` tool. Use it to record your activities aft
 
 - The legacy system is fully functional - use it for actual project management
 - The MCP server is in early development and not ready for use
+
+## Prompt Guidelines
+
+- Be careful when creating prompts to not imagine some magic code that isn't there. Pseudocode is not allowed.
+- You cannot invent new variables or logic without user confirmation.

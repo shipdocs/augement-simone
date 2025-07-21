@@ -22,7 +22,8 @@ template: |
   - project.yaml (or project.yaml.template)
   - constitution.md (or constitution.md.template)
   - architecture.md (or architecture.md.template)
-  - CLAUDE.md (or CLAUDE.md.template)
+  
+  Also check if {{PROJECT_PATH}}/CLAUDE.md exists (project-level Claude instructions).
   
   Document what exists and what's missing.
   
@@ -132,6 +133,20 @@ template: |
   Update project.yaml with correct GitHub settings if needed.
   
   ## 7 · Complete initialization
+  
+  Check if {{PROJECT_PATH}}/CLAUDE.md exists:
+  
+  If CLAUDE.md exists:
+  - Ask the user: "Would you like to add activity logging instructions to your CLAUDE.md file?"
+  - If yes, append this section to CLAUDE.md:
+    ```
+    ## Activity Logging
+    
+    You have access to the `log_activity` tool. Use it to record your activities after every activity that is relevant for the project. This helps track development progress and understand what has been done.
+    ```
+  
+  If CLAUDE.md does not exist:
+  - Inform the user: "No CLAUDE.md file found in your project. Please run Claude Code's project initialization to create this file first, then re-run Simone init to add activity logging instructions."
   
   {{#if simoneFiles.hasConfig}}
   Summarize what was updated and any manual steps needed.

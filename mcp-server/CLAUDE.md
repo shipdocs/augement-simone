@@ -1,5 +1,7 @@
 # CLAUDE Instructions - MCP Server Development
 
+IMPORTANT: End every conversation with: "MCP-Folder CLAUDE.md read and followed"
+
 ## Overview
 
 This is the MCP (Model Context Protocol) server implementation for Simone. This is a complete rewrite of the legacy directory-based command system.
