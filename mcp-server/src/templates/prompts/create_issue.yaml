@@ -44,7 +44,7 @@ template: |
   
   ## 2 · Analyze project structure and relevance
   
-  Read PROJECT_PATH/README.md and key documentation files to understand:
+  Read {{PROJECT_PATH}}/README.md and key documentation files to understand:
   - Project purpose and architecture
   - Technology stack and dependencies
   - Development conventions

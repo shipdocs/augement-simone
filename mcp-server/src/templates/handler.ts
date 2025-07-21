@@ -12,6 +12,7 @@ import { readFile } from 'fs/promises';
 import Handlebars from 'handlebars';
 import { TemplateLoader } from './loader.js';
 import { buildTemplateContext } from './context.js';
+import { registerHelpers } from './helpers/index.js';
 import { ConfigLoader } from '../config/index.js';
 import type { PromptTemplate } from '../types/index.js';
 
@@ -28,24 +29,8 @@ export class PromptHandler {
     this.loader = new TemplateLoader(projectPath);
     this.configLoader = new ConfigLoader(projectPath);
     
-    // Register equality helper for comparisons
-    Handlebars.registerHelper('eq', function(a: any, b: any) {
-      return a === b;
-    });
-    
-    // Register comparison helpers
-    Handlebars.registerHelper('lt', function(a: any, b: any) {
-      return a < b;
-    });
-    Handlebars.registerHelper('lte', function(a: any, b: any) {
-      return a <= b;
-    });
-    Handlebars.registerHelper('gt', function(a: any, b: any) {
-      return a > b;
-    });
-    Handlebars.registerHelper('gte', function(a: any, b: any) {
-      return a >= b;
-    });
+    // Register all custom Handlebars helpers
+    registerHelpers();
   }
 
   async getPromptMessages(name: string, args: Record<string, any> = {}): Promise<PromptMessage[]> {
