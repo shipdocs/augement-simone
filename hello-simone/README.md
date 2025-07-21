@@ -19,7 +19,8 @@ npx hello-simone --mcp
 ```
 
 This will:
-- Configure your project's `.mcp.json` 
+
+- Configure your project's `.mcp.json`
 - Create `.simone/config.yaml` template
 - Provide setup instructions for Claude Desktop
 
@@ -36,6 +37,7 @@ npx hello-simone
 ## MCP Early Preview Notice
 
 The MCP version is in early preview:
+
 - No import process from legacy Simone yet
 - Best tested on non-critical projects
 - Please report issues on GitHub or contact @helmi on Discord
@@ -43,6 +45,7 @@ The MCP version is in early preview:
 ## Requirements
 
 ### MCP Version
+
 - GitHub CLI (`gh`) or GitHub MCP server
 - Node.js >= 18.0.0
 - Git repository (required)
@@ -50,6 +53,7 @@ The MCP version is in early preview:
 ## Cross-Platform Compatibility
 
 The installer automatically detects your project directory and configures it correctly for all platforms:
+
 - ✅ **Windows** (CMD, PowerShell, Git Bash)
 - ✅ **macOS**
 - ✅ **Linux**
@@ -58,11 +62,13 @@ The installer automatically detects your project directory and configures it cor
 ## After Installation
 
 For MCP version:
+
 1. Fill in `.simone/config.yaml` with your project details
 2. Restart Claude Desktop
 3. Run `/hello_simone` in Claude to verify configuration
 
 For legacy version:
+
 - Check the `.simone/` directory in your project
 - See the legacy documentation for usage
 

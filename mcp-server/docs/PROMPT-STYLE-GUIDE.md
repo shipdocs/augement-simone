@@ -2,6 +2,8 @@
 
 This guide defines the standard format and style for all Simone MCP prompts.
 
+**IMPORTANT** Prompts are commands towards the LLM. If you want input from the user, tell the LLM to ask the User for it.
+
 ## Core Principles
 
 1. **INFORMATION DENSE** - Every line serves a purpose
@@ -28,32 +30,33 @@ arguments:
     required: false
 template: |
   # Action Verb + Object
-  
+
   **IMPORTANT:** Follow from Top to Bottom - don't skip anything!
-  
+
   **CREATE A TODO LIST** with exactly these N items:
-  
+
   1. First high-level step
   2. Second high-level step
   3. ...
   N. Final step
-  
+
   ## 1 · First detailed step
-  
+
   [Detailed instructions...]
-  
+
   ## 2 · Second detailed step
-  
+
   [Detailed instructions...]
-  
+
   ## N · Final step with output
-  
+
   [Final instructions and output format...]
 ```
 
 ## Interview Pattern (REQUIRED)
 
-Due to MCP argument limitations (no spaces in arguments), most prompts MUST start with an interview phase:
+Due to MCP argument limitations (no spaces in arguments), most prompts MUST start with an interview phase.
+Only use one to two arguments if really helpful and possible as a short format and always make them optional.
 
 ```handlebars
 ## 1 · Gather user input
@@ -96,17 +99,21 @@ This pattern ensures we gather all necessary information despite argument constr
 
 ## Conditional Logic
 
-Use Handlebars for risk-based behavior:
+Use Handlebars for risk-based behavior.
+
+Note: Risk levels reach from 1 to 10 with one being most careful while 10 being most risky. Usually we cover 3 levels: 1, 5 and 10.
 
 ```handlebars
-{{#if (lt project.riskLevel 5)}}
+{{#if (eq project.riskLevel 1)}}
 - Ask user for confirmation before proceeding
-{{else if (lte project.riskLevel 7)}}
+{{else if (lte project.riskLevel 5)}}
 - Show plan and proceed unless user objects
 {{else}}
 - Execute immediately without confirmation
 {{/if}}
 ```
+
+If 5 is included in the more careful variant or not depends on how important/critical the action is.
 
 ## Standard Output Format
 
@@ -119,7 +126,7 @@ All prompts MUST end with a structured result:
 
 💬 **Summary**: [One paragraph of what was done]
 
-⏭️ **Next steps**: 
+⏭️ **Next steps**:
 - [Recommended action 1]
 - [Recommended action 2]
 ```
@@ -153,7 +160,7 @@ The partial tells the LLM whether to use GitHub MCP or CLI based on project conf
 Use these partials to conditionally include project-specific commands:
 
 - `{{> lint}}` - Run linting if configured
-- `{{> test}}` - Run tests if configured  
+- `{{> test}}` - Run tests if configured
 - `{{> typecheck}}` - Run type checking if configured
 - `{{> quality-checks}}` - Run all quality checks (combines above)
 

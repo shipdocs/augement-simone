@@ -14,7 +14,7 @@ import { fileURLToPath } from 'url';
 
 import { getEnvConfig } from './config/index.js';
 import { initializeTemplating } from './templates/index.js';
-import { initializeLogger, logError } from './utils/logger.js';
+import { initializeLogger, logError, logDebug } from './utils/logger.js';
 import { ActivityLogger } from './tools/activity-logger/index.js';
 import { getTools, getToolSchemas, handleToolCall, type ToolContext } from './tools/index.js';
 
@@ -96,43 +96,43 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 
 // Watch for prompt changes
-function watchPrompts() {
+async function watchPrompts() {
   const projectPromptsDir = join(config.projectPath, '.simone', 'prompts');
   const __dirname = dirname(fileURLToPath(import.meta.url));
   const builtInPromptsDir = join(__dirname, 'templates', 'prompts');
   
-  const watchDir = (dir: string) => {
+  const watchDir = async (dir: string) => {
     try {
-      watch(dir, { recursive: true }, async (_eventType, filename) => {
+      watch(dir, { recursive: true }, (_eventType, filename) => {
         if (filename && (filename.endsWith('.yaml') || filename.endsWith('.hbs'))) {
-          console.log(`[Simone MCP] Detected change in: ${filename}`);
+          // Log asynchronously without blocking
+          logDebug(`Detected change in: ${filename}`).catch(() => {});
           
           // Clear the template cache
           promptHandler.clearCache();
           
           // Send notification that prompts have changed
-          try {
-            await server.notification({
-              method: 'notifications/prompts/list_changed',
-              params: {},
-            });
-            console.log('[Simone MCP] Sent prompts/list_changed notification');
-          } catch (error) {
-            console.error('[Simone MCP] Failed to send notification:', error);
-          }
+          server.notification({
+            method: 'notifications/prompts/list_changed',
+            params: {},
+          }).then(() => {
+            logDebug('Sent prompts/list_changed notification').catch(() => {});
+          }).catch((error) => {
+            logError(`Failed to send notification: ${error}`).catch(() => {});
+          });
         }
       });
-      console.log(`[Simone MCP] Watching directory: ${dir}`);
+      await logDebug(`Watching directory: ${dir}`);
     } catch (error) {
-      console.log(`[Simone MCP] Could not watch directory: ${dir} (this is okay if it doesn't exist)`);
+      await logDebug(`Could not watch directory: ${dir} (this is okay if it doesn't exist)`);
     }
   };
   
-  watchDir(projectPromptsDir);
+  await watchDir(projectPromptsDir);
   
   // Only watch built-in prompts in development
   if (process.env['NODE_ENV'] !== 'production') {
-    watchDir(builtInPromptsDir);
+    await watchDir(builtInPromptsDir);
   }
 }
 
@@ -142,8 +142,8 @@ async function main() {
   await server.connect(transport);
   
   // Start watching for prompt changes
-  watchPrompts();
-  console.log('[Simone MCP] Server started with prompt hot-reload enabled');
+  await watchPrompts();
+  await logDebug('Server started with prompt hot-reload enabled');
   
   // Server started successfully
 }
