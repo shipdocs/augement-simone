@@ -66,18 +66,17 @@ template: |
 
   [Clear, imperative instructions]
 
-  {{#if (conditional logic needed)}}
-  Risk-based behavior:
-  {{#if (lt project.riskLevel 5)}}
-  - [Careful mode action]
-  {{else if (lte project.riskLevel 7)}}
-  - [Balanced mode action]  
-  {{else}}
-  - [YOLO mode action]
-  {{/if}}
-  {{/if}}
+  [For each argument used, consider what happens when it's missing:
+  - Ask the user for the value?
+  - Use a default behavior?
+  - Search for the information?]
+  
+  [CRITICAL: Only reference actual commands/tools that exist
+  - No pseudocode
+  - No made-up function names
+  - Verify commands exist in the codebase]
 
-  [Specific steps with file paths, commands, or API calls]
+  [Specific steps with real commands or descriptive actions]
   ```
 
   ## 5 · Add conditional logic
@@ -96,6 +95,25 @@ template: |
   {{/if}}
   ```
 
+  ### Using Partials
+
+  Include these partials to keep prompts DRY:
+
+  1. **GitHub operations**: Use `{{> github}}` then describe the operation
+     ```handlebars
+     {{> github}}
+     
+     Create a pull request with title "[Type]: Description"
+     ```
+
+  2. **Quality checks**: Use command partials
+     ```handlebars
+     {{> quality-checks}}
+     ```
+     Or individual checks: `{{> lint}}`, `{{> test}}`, `{{> typecheck}}`
+
+  IMPORTANT: Don't create detailed tool instructions - the LLM knows how to use tools. Just tell it which tool is available via partials.
+
   ## 6 · Define output format
 
   Every prompt MUST end with:
@@ -106,13 +124,21 @@ template: |
   🔎 **Scope**: [Specific items affected]
 
   💬 **Summary**: [One paragraph explanation]
-
-  ⏭️ **Next steps**: 
-  - Use `/prompt_name` to [follow-up action]
-  - [Other recommended actions]
   ```
 
+  **CRITICAL OUTPUT RULES:**
+  - NO "Next steps" section with commands
+  - Each section provides unique information
+  - No pseudocode or non-existent features
+
   ## 7 · Generate and save prompt
+
+  **PRE-GENERATION CHECKLIST:**
+  □ All referenced commands exist in codebase
+  □ Every argument has a missing-case strategy
+  □ No invented functions or variables
+  □ Output sections don't duplicate information
+  □ No "Next steps" with fake commands
 
   Create the complete prompt YAML:
 
@@ -147,8 +173,3 @@ template: |
   🔎 **Scope**: New prompt following Simone style guide
 
   💬 **Summary**: Generated a structured prompt with {{number_of_steps}} main steps, proper conditional logic for risk levels, and standard output format. The prompt follows all style guide requirements including TODO structure, imperative voice, and interview-style input gathering.
-
-  ⏭️ **Next steps**: 
-  - Test the prompt with `/simone:{{prompt_name}}`
-  - Review generated YAML for completeness
-  - Add to prompt documentation
