@@ -1,0 +1,165 @@
+name: work_issue
+description: Work on a GitHub issue from start to finish including implementation and pull request
+arguments:
+  - name: issue
+    description: Issue number to work on
+    required: false
+template: |
+  # Work GitHub Issue
+  
+  **IMPORTANT:** Follow from Top to Bottom - don't skip anything!
+  
+  **CREATE A TODO LIST** with exactly these 6 items:
+  
+  1. Fetch and understand issue content
+  2. Assess information quality and gather missing details
+  3. Create detailed implementation plan
+  4. Setup development branch
+  5. Implement the solution
+  6. Prepare and create pull request
+  
+  ## 1 · Fetch and understand issue content
+  
+  {{#if issue}}
+  Fetching issue #{{issue}} content
+  {{else}}
+  Ask the user: "Which issue number would you like to work on?"
+  {{/if}}
+  
+  {{> github}}
+  
+  Fetch issue #{{issue}} details to understand the requirements.
+  
+  Read the issue content carefully and identify:
+  - Core problem or feature to implement
+  - Technical requirements listed
+  - Acceptance criteria
+  - Referenced files or components
+  - Any linked issues or context
+  
+  ## 2 · Assess information quality and gather missing details
+  
+  Evaluate the issue information completeness:
+  - Are implementation steps clear?
+  - Are affected files identified?
+  - Is the expected behavior well-defined?
+  - Are there edge cases to consider?
+  
+  {{#if (lt project.riskLevel 5)}}
+  If critical information is missing, ask the user:
+  "The issue seems to be missing [specific details]. Could you clarify [specific questions]?"
+  {{else if (gte project.riskLevel 5)}}
+  Use research tools to fill knowledge gaps:
+  - Search the codebase for related implementations
+  - Review similar past issues and PRs
+  - Check documentation for architectural patterns
+  
+  {{#if (lt project.riskLevel 10)}}
+  If questions remain after research, ask the user for clarification
+  {{else}}
+  Document any assumptions you're making based on project context
+  {{/if}}
+  {{/if}}
+  
+  ## 3 · Create detailed implementation plan
+  
+  {{#if constitution}}
+  Follow project constitution:
+  {{constitution}}
+  {{/if}}
+  
+  Based on the issue requirements and codebase analysis, create a step-by-step plan:
+  
+  1. List all files that need to be modified or created
+  2. For each file, specify the changes needed
+  3. Identify the order of implementation
+  4. Note any dependencies between changes
+  5. Consider testing requirements
+  
+  Follow the project's development principles and conventions.
+  
+  {{#if (lt project.riskLevel 5)}}
+  Present the implementation plan to the user:
+  "Here's my implementation plan for issue #{{issue}}:
+  [Detailed plan]
+  
+  Does this approach look good to you?"
+  {{else}}
+  Proceed with the implementation plan
+  {{/if}}
+  
+  ## 4 · Setup development branch
+  
+  Determine branch type based on issue labels:
+  - If labeled as "bug" or fixing existing functionality: `bugfix/`
+  - If labeled as "feature" or "enhancement": `feature/`
+  - Otherwise, analyze issue content to determine appropriate prefix
+  
+  Create a descriptive branch name:
+  ```bash
+  # Example: feature/add-user-authentication or bugfix/fix-login-error
+  git checkout -b [branch-type]/[descriptive-name-from-issue]
+  ```
+  
+  Ensure you're on the correct branch before starting implementation:
+  ```bash
+  git status
+  ```
+  
+  ## 5 · Implement the solution
+  
+  Work through your implementation plan systematically:
+  
+  - Start with the foundational changes first
+  - Implement each file modification according to the plan
+  - Follow existing code patterns and style
+  - Add necessary imports and dependencies
+  - Handle error cases appropriately
+  
+  After each significant step in your plan:
+  - Log the activity using the log_activity tool
+  - Verify the changes work as expected
+  - Run any relevant tests or build commands
+  
+  Continue implementation until all items in your plan are completed.
+  
+  {{#if constitution}}
+  Follow project constitution:
+  {{constitution}}
+  {{/if}}
+  
+  {{> quality-checks}}
+  
+  ## 6 · Prepare and create pull request
+  
+  Stage and commit your changes:
+  ```bash
+  git add -A
+  git status  # Review changes to be committed
+  ```
+  
+  Create a commit with a descriptive message:
+  ```bash
+  git commit -m "fix(scope): description addressing #{{issue}}"
+  ```
+  
+  Push the branch:
+  ```bash
+  git push -u origin $(git branch --show-current)
+  ```
+  
+  Define PR details:
+  - Title: "[Type]: Brief description (#{{issue}})"
+  - Body should include:
+    - Summary section with "Closes #{{issue}}"
+    - Changes made with any decisions or trade-offs
+    - Testing performed and edge cases considered
+    - Any potential issues needing review
+  
+  Create the pull request with the title and body defined above, ensuring it links to issue #{{issue}}.
+  
+  ✅ **Result**: Successfully implemented issue #{{issue}} and created pull request
+  
+  🔎 **Scope**: Modified [N] files, added [N] lines, removed [N] lines
+  
+  💬 **Summary**: Completed implementation of issue #{{issue}} following the requirements and acceptance criteria. Created a pull request with comprehensive changes addressing all aspects of the issue, including proper error handling and test coverage where applicable.

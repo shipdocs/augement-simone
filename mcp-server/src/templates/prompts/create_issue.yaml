@@ -1,0 +1,169 @@
+name: create_issue
+description: Create a comprehensive GitHub issue with proper context and structure
+arguments:
+  - name: title
+    description: Brief title for the issue
+    required: false
+  - name: milestone
+    description: Target milestone for the issue
+    required: false
+  - name: related_issue
+    description: Related issue number if connected
+    required: false
+template: |
+  # Create GitHub Issue
+  
+  **IMPORTANT:** Follow from Top to Bottom - don't skip anything!
+  
+  **CREATE A TODO LIST** with exactly these 7 items:
+  
+  1. Gather issue details and context
+  2. Analyze project structure and relevance  
+  3. Research codebase for technical context
+  4. Assess complexity and scope
+  5. Structure issue content
+  6. Apply GitHub metadata
+  7. Create the GitHub issue
+  
+  ## 1 · Gather issue details and context
+  
+  {{#if title}}
+  Using provided title: "{{title}}"
+  {{else}}
+  Ask the user: "What is the new issue about? Provide a brief title and detailed description."
+  {{/if}}
+  
+  Interview the user to understand:
+  - Core problem or feature request
+  - Expected behavior or outcome
+  - Current behavior (if applicable)
+  - Is this connected to other entities (issues, PRs, milestones)?
+  {{#if related_issue}}
+  - Connected to issue #{{related_issue}}
+  {{/if}}
+  
+  ## 2 · Analyze project structure and relevance
+  
+  Read PROJECT_PATH/README.md and key documentation files to understand:
+  - Project purpose and architecture
+  - Technology stack and dependencies
+  - Development conventions
+  
+  {{#if constitution}}
+  Follow project constitution:
+  {{constitution}}
+  {{/if}}
+  
+  Evaluate if the user input makes sense in the project context:
+  {{#if (lt project.riskLevel 5)}}
+  If unclear, ask the user for clarification about project fit
+  {{else if (lte project.riskLevel 7)}}
+  Research the web for similar implementations and patterns
+  Ask the user if critical context is still missing
+  {{else}}
+  Document any assumptions about project integration
+  {{/if}}
+  
+  ## 3 · Research codebase for technical context
+  
+  Search the codebase to identify:
+  - Related files and components
+  - Existing implementations to build upon
+  - Potential conflicts or dependencies
+  - Code patterns to follow
+  
+  Use grep to find relevant code:
+  ```bash
+  grep -r "relevant_term" --include="*.{js,ts,py,java}" .
+  ```
+  
+  List all files that will be affected by this issue.
+  
+  ## 4 · Assess complexity and scope
+  
+  Calculate complexity score (1-10):
+  - 1-3: Simple changes, single file
+  - 4-6: Multiple files, moderate logic
+  - 7-8: Architectural changes, multiple components
+  - 9-10: Major refactoring, system-wide impact
+  
+  If complexity score is greater than 5:
+  - Consider if this should be split into multiple issues
+  - Identify logical breakpoints
+  - Suggest sub-issues if appropriate
+  - Confirm approach with user
+  - Add research links for complex implementations
+  
+  ## 5 · Structure issue content
+  
+  Create issue content with these sections:
+  
+  ```markdown
+  ## Description
+  [Clear problem statement or feature description]
+  
+  ## Context
+  - Project area: [Component/Module]
+  - Related to: {{#if related_issue}}#{{related_issue}}{{else}}[Issues/PRs if any]{{/if}}
+  - Complexity: [Score]/10
+  
+  ## Technical Details
+  - Affected files:
+    - `path/to/file1.ext` - [What needs to change]
+    - `path/to/file2.ext` - [What needs to change]
+  - Key functions/classes: [List with brief descriptions]
+  
+  ## Requirements
+  [Detailed requirements that a junior developer can follow]
+  
+  ## Implementation Steps
+  - [ ] Step 1: [Specific action]
+  - [ ] Step 2: [Specific action]
+  - [ ] Step 3: [Specific action]
+  [Continue for all necessary steps]
+  
+  ## Acceptance Criteria
+  - [ ] [Testable criterion 1]
+  - [ ] [Testable criterion 2]
+  - [ ] [Testable criterion 3]
+  
+  ## Additional Resources (if complexity > 5)
+  - [Link 1](url) - Description
+  - [Link 2](url) - Description
+  ```
+  
+  ## 6 · Apply GitHub metadata
+  
+  {{> github}}
+  
+  Determine appropriate labels:
+  - Type: `bug`, `enhancement`, `feature`, `documentation`
+  - Priority: `priority:high`, `priority:medium`, `priority:low`
+  - Complexity: `complexity:[score]` based on calculated score
+  - Area: Based on affected components
+  
+  {{#if milestone}}
+  Assign to milestone: {{milestone}}
+  {{else}}
+  Check available milestones and suggest appropriate one
+  {{/if}}
+  
+  ## 7 · Create the GitHub issue
+  
+  Create the issue with:
+  - Title: "{{title}}"
+  - Body: [Issue content from step 5]
+  - Labels: [Combined labels from step 6]
+  {{#if milestone}}- Milestone: "{{milestone}}"{{/if}}
+  
+  Create the issue using the title, body, labels and milestone defined above.
+  
+  {{#if related_issue}}
+  After creating the issue, link it to issue #{{related_issue}} by adding a comment that references the new issue number.
+  {{/if}}
+  
+  ✅ **Result**: GitHub issue #[number] created successfully
+  
+  🔎 **Scope**: New issue with [complexity]/10 complexity affecting [N] files
+  
+  💬 **Summary**: Created comprehensive issue "[title]" with detailed implementation steps, technical context, and acceptance criteria. The issue provides sufficient information for a junior developer to implement the solution independently.
