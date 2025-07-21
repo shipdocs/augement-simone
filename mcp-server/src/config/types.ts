@@ -15,6 +15,7 @@ export interface ProjectMetadata {
   description?: string;
   type?: 'single' | 'monorepo';
   version?: string;
+  riskLevel?: number; // 1-10 scale: 1=careful, 5=balanced, 10=risky
 }
 
 export interface ProjectContext {
@@ -23,6 +24,7 @@ export interface ProjectContext {
   stack?: StackConfig;
   tooling?: ToolingConfig;
   methodology?: MethodologyConfig;
+  github?: GitHubConfig; // Context can override project-level GitHub settings
   // Allow custom properties
   [key: string]: any;
 }
