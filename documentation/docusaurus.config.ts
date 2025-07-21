@@ -41,8 +41,14 @@ const config: Config = {
       'classic',
       {
         docs: {
-          routeBasePath: '/', // Set docs as the root
+          path: './',
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
+          exclude: [
+            '**/node_modules/**',
+            '**/.docusaurus/**',
+            '**/build/**',
+          ],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -50,6 +56,7 @@ const config: Config = {
           
         },
         blog: false, // Disable the blog plugin
+        pages: false, // Disable the pages plugin
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -78,12 +85,6 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'docsSidebar',
-          position: 'left',
-          label: 'Docs',
-        },
-        {
           href: 'https://github.com/helmi/claude-simone',
           position: 'right',
           className: 'header-github-link',
@@ -99,7 +100,7 @@ const config: Config = {
           items: [
             {
               label: 'Introduction',
-              to: '/docs/introduction/what-is-simone',
+              to: '/',
             },
           ],
         },
