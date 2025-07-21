@@ -1,59 +1,41 @@
 # Project Constitution
 
-## Project Identity
+## Project
 - **Name**: [PROJECT NAME]
-- **Type**: [PROJECT TYPE]
-- **Purpose**: [PROJECT DESCRIPTION]
-- **Primary Language**: [LANGUAGE]
-- **Created**: [DATE]
+- **Description**: [ONE LINE DESCRIPTION - WHAT DOES THIS PROJECT DO?]
 
-## Core Principles
-[TO BE FILLED: Add 3-5 core principles that guide this project]
-<!-- Examples:
-- Simplicity over complexity
-- User experience first
-- Performance matters
-- Security by design
--->
+## Tech Stack
+- **Language**: [PRIMARY LANGUAGE]
+- **Framework**: [PRIMARY FRAMEWORK]
+- **Package Manager**: [npm/yarn/pnpm/pip/etc]
 
-## Development Standards
-- **Test Command**: [TEST COMMAND OR NULL]
-- **Lint Command**: [LINT COMMAND OR NULL]
-- **Build Command**: [BUILD COMMAND OR NULL]
-- **Type Check**: [TYPECHECK COMMAND OR NULL]
+## Structure
+```
+[KEY DIRECTORIES AND THEIR PURPOSE]
+Example:
+src/          - Application source code
+tests/        - Test files
+docs/         - Documentation
+```
 
-## Coding Conventions
-[TO BE FILLED: Describe coding style and conventions]
-<!-- Examples:
-- Follow [LANGUAGE] community standards
-- Prefer functional over imperative style
-- Write self-documenting code
-- Add comments only when necessary
--->
+## Essential Commands
+```bash
+# Run
+[HOW TO RUN THE PROJECT]
 
-## Team Guidelines
-[TO BE FILLED: How the team works together]
-<!-- Examples:
-- Code reviews required for all changes
-- Write tests for new features
-- Document breaking changes
-- Follow semantic versioning
--->
+# Test
+[HOW TO RUN TESTS]
 
-## Constraints & Requirements
-[TO BE FILLED: Technical or business constraints]
-<!-- Examples:
-- Must support Node.js >= 18
-- Keep bundle size under 100KB
-- Maintain backwards compatibility
-- No external dependencies
--->
+# Build
+[HOW TO BUILD/COMPILE]
+```
 
-## Architecture Decisions
-[TO BE FILLED: Key architectural choices]
-<!-- Examples:
-- Monorepo vs separate packages
-- State management approach
-- API design philosophy
-- Testing strategy
+## Critical Rules
+[USER DEFINED RULES THAT MUST ALWAYS BE FOLLOWED]
+<!--
+Examples:
+- NEVER modify production database directly
+- Always use TypeScript, no plain JavaScript
+- All PRs require tests
+- Follow existing code style
 -->

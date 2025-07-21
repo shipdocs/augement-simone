@@ -104,7 +104,12 @@ export class PromptHandler {
     // Compile and render the template
     try {
       const compiledTemplate = await this.loader.compileTemplate(prompt.template);
-      const renderedText = compiledTemplate(context);
+      let renderedText = compiledTemplate(context);
+      
+      // Prepend constitution if it exists
+      if (context['constitution']) {
+        renderedText = `## Project Constitution\n\n${context['constitution']}\n\n---\n\n${renderedText}`;
+      }
 
       return [{
         role: 'user',

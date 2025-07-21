@@ -85,20 +85,26 @@ template: |
   ## 4 · Create or update constitution
   
   If constitution.md exists:
-  - Read it and get feedback from the user about needed updates
+  - Read it and ask if user wants to update any section
   
   If constitution.md does not exist:
   - Check if constitution.md.template exists
   - If template exists, copy it to constitution.md
   - If no template, create new constitution.md
   
-  Analyze the project for existing conventions, standards, and practices.
+  Fill in the constitution by:
+  1. **Project info**: Get name and one-line description from user
+  2. **Tech stack**: Detect language, framework, package manager from project files
+  3. **Structure**: List key directories (only important ones like src/, tests/, etc.)
+  4. **Essential commands**: Detect from package.json/Makefile/etc or ask user:
+     - How to run the project
+     - How to run tests
+     - How to build/compile
+  5. **Critical rules**: Ask user: "What are the MUST-FOLLOW rules for this project?"
+     - Only include rules that are truly critical
+     - Examples: "Never commit directly to main", "All code must be TypeScript"
   
-  For projects with multiple packages/services, consider both shared standards and context-specific practices.
-  
-  Get input from the user about project principles, development standards, and team guidelines.
-  
-  Fill in or update the constitution based on analysis and user input.
+  Keep it CONCISE - this gets included in every prompt!
   
   ## 5 · Create or update architecture document
   
