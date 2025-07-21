@@ -13,7 +13,7 @@ export default defineConfig({
   target: 'node20',
   minify: process.env.NODE_ENV === 'production',
   async onSuccess() {
-    // Cross-platform copy of prompts directory
+    // Cross-platform copy of directories
     async function copyDir(src: string, dest: string) {
       await fs.mkdir(dest, { recursive: true });
       const entries = await fs.readdir(src, { withFileTypes: true });
@@ -30,15 +30,10 @@ export default defineConfig({
       }
     }
     
+    // Copy prompts directory to dist/prompts (where the loader expects them)
     await copyDir(
       join('src', 'templates', 'prompts'),
       join('dist', 'prompts')
-    );
-    
-    // Copy .simone templates
-    await copyDir(
-      join('.simone'),
-      join('dist', '.simone')
     );
   },
 });

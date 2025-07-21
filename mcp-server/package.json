@@ -13,11 +13,10 @@
     }
   },
   "bin": {
-    "simone-mcp": "./dist/index.js"
+    "simone-mcp": "dist/index.js"
   },
   "files": [
     "dist",
-    ".simone",
     "README.md",
     "LICENSE"
   ],
@@ -51,7 +50,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Helmi/claude-simone.git",
+    "url": "git+https://github.com/Helmi/claude-simone.git",
     "directory": "mcp-server"
   },
   "bugs": {
