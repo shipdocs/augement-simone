@@ -1,25 +1,22 @@
 # Versioning Strategy
 
-This repository contains three distinct components, each with its own versioning:
+This repository contains three distinct components, each with its own versioning. Current versions are tracked in `versions.json`.
 
 ## Components
 
 1. **Legacy Simone** (`./legacy`)
-   - Version: 0.3.5
    - Type: Git tags only
-   - Tag format: `legacy/v0.3.5`
+   - Tag format: `legacy/vX.Y.Z`
    - The original directory-based command system
 
 2. **hello-simone** (`./hello-simone`)
-   - Version: 0.5.4
    - Type: NPM package
-   - Tag format: `hello/v0.5.4`
-   - NPM installer for legacy Simone
+   - Tag format: `hello/vX.Y.Z`
+   - NPM installer for Simone (supports both MCP and legacy)
 
 3. **MCP Server** (`./mcp-server`)
-   - Version: 0.1.0
    - Type: NPM package (@helmi/simone-mcp)
-   - Tag format: `mcp/v0.1.0`
+   - Tag format: `mcp/vX.Y.Z`
    - Model Context Protocol implementation
 
 ## Version Management
