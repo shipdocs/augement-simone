@@ -27,9 +27,7 @@ template: |
   
   Document what exists and what's missing.
   
-  {{#if simoneFiles.hasConfig}}
   If all core files exist (project configuration, constitution, architecture), get input from the user about what they want to update - configuration, constitution, architecture, or everything.
-  {{/if}}
   
   ## 2 · Analyze project structure
   
@@ -50,15 +48,15 @@ template: |
   
   ## 3 · Setup or update configuration
   
-  {{#if simoneFiles.hasConfig}}
-  Read the existing project.yaml and verify/update:
-  {{else}}
-  Check if project.yaml.template exists. If yes:
-  - Copy project.yaml.template to project.yaml
-  - Remove the .template extension
+  If project.yaml exists:
+  - Read the existing configuration and verify/update
   
-  Fill in the configuration based on project analysis:
-  {{/if}}
+  If project.yaml does not exist:
+  - Check if project.yaml.template exists
+  - If template exists, copy it to project.yaml
+  - If no template, create new project.yaml
+  
+  Fill in or update the configuration based on project analysis:
   
   - project.name: Project name from analysis or get from user
   - project.description: What the project is about
@@ -86,12 +84,13 @@ template: |
   
   ## 4 · Create or update constitution
   
-  {{#if simoneFiles.hasConstitution}}
-  Read the existing constitution.md and get feedback from the user about needed updates.
-  {{else}}
-  Check if constitution.md.template exists. If yes:
-  - Copy constitution.md.template to constitution.md
-  - Remove the .template extension
+  If constitution.md exists:
+  - Read it and get feedback from the user about needed updates
+  
+  If constitution.md does not exist:
+  - Check if constitution.md.template exists
+  - If template exists, copy it to constitution.md
+  - If no template, create new constitution.md
   
   Analyze the project for existing conventions, standards, and practices.
   
@@ -99,19 +98,17 @@ template: |
   
   Get input from the user about project principles, development standards, and team guidelines.
   
-  Fill in the constitution based on analysis and user input.
-  
-  Write the constitution.md file.
-  {{/if}}
+  Fill in or update the constitution based on analysis and user input.
   
   ## 5 · Create or update architecture document
   
-  {{#if simoneFiles.hasArchitecture}}
-  Read the existing architecture.md and get feedback from the user about needed updates.
-  {{else}}
-  Check if architecture.md.template exists. If yes:
-  - Copy architecture.md.template to architecture.md
-  - Remove the .template extension
+  If architecture.md exists:
+  - Read it and get feedback from the user about needed updates
+  
+  If architecture.md does not exist:
+  - Check if architecture.md.template exists
+  - If template exists, copy it to architecture.md
+  - If no template, create new architecture.md
   
   Analyze the codebase structure and organization.
   
@@ -119,10 +116,7 @@ template: |
   
   Get input from the user about the system architecture and design decisions.
   
-  Create comprehensive architecture documentation based on analysis and user input.
-  
-  Write the architecture.md file.
-  {{/if}}
+  Create or update comprehensive architecture documentation based on analysis and user input.
   
   ## 6 · Verify Git and GitHub setup
   
@@ -148,18 +142,14 @@ template: |
   If CLAUDE.md does not exist:
   - Inform the user: "No CLAUDE.md file found in your project. Please run Claude Code's project initialization to create this file first, then re-run Simone init to add activity logging instructions."
   
-  {{#if simoneFiles.hasConfig}}
-  Summarize what was updated and any manual steps needed.
-  {{else}}
-  Confirm all files were created successfully and suggest appropriate next steps.
-  {{/if}}
+  Summarize what was created or updated and any manual steps needed.
   
   Use log_activity to record the initialization/update:
-  - activity: "Initialized Simone configuration for project"
+  - activity: "Initialized or updated Simone configuration for project"
   - tool_name: "init_simone"
   - tags: ["configuration", "setup"]
   - files_affected: List all created/modified files
   
-  ✅ **Result**: Simone configuration {{#if simoneFiles.hasConfig}}updated{{else}}initialized{{/if}} successfully
+  ✅ **Result**: Simone configuration successfully set up
   
-  💬 **Summary**: {{#if simoneFiles.hasConfig}}Updated Simone configuration files based on current project state{{else}}Created initial Simone configuration with constitution and architecture documentation{{/if}}
+  💬 **Summary**: Completed Simone configuration with all necessary files and documentation

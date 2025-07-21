@@ -75,19 +75,6 @@ export class PromptHandler {
       context['github'] = projectConfig.github;
     }
 
-    // Check for Simone files existence
-    const simoneFiles = {
-      hasConfig: existsSync(join(this.projectPath, '.simone', 'project.yaml')),
-      hasConstitution: existsSync(join(this.projectPath, '.simone', 'constitution.md')),
-      hasArchitecture: existsSync(join(this.projectPath, '.simone', 'architecture.md')),
-      isEmptyProject: !existsSync(join(this.projectPath, 'package.json')) && 
-                      !existsSync(join(this.projectPath, 'README.md')) &&
-                      !existsSync(join(this.projectPath, 'src')) &&
-                      !existsSync(join(this.projectPath, 'lib')) &&
-                      !existsSync(join(this.projectPath, 'index.js')) &&
-                      !existsSync(join(this.projectPath, 'index.ts')),
-    };
-    
     // Add extended project context
     const projectContext = {
       hasReadme: existsSync(join(this.projectPath, 'README.md')),
@@ -98,13 +85,12 @@ export class PromptHandler {
                   existsSync(join(this.projectPath, 'tests')),
     };
     
-    context['simoneFiles'] = simoneFiles;
     context['projectContext'] = projectContext;
 
     // Auto-load constitution if it exists
-    if (simoneFiles.hasConstitution) {
+    const constitutionPath = join(this.projectPath, '.simone', 'constitution.md');
+    if (existsSync(constitutionPath)) {
       try {
-        const constitutionPath = join(this.projectPath, '.simone', 'constitution.md');
         const constitutionContent = await readFile(constitutionPath, 'utf8');
         context['constitution'] = constitutionContent;
       } catch (error) {
