@@ -15,7 +15,7 @@ This repository contains three distinct components, each with its own versioning
    - NPM installer for Simone (supports both MCP and legacy)
 
 3. **MCP Server** (`./mcp-server`)
-   - Type: NPM package (@helmi/simone-mcp)
+   - Type: NPM package (simone-mcp)
    - Tag format: `mcp/vX.Y.Z`
    - Model Context Protocol implementation
 
@@ -102,7 +102,7 @@ Include component-specific changelogs and assets in each release.
 
 NPM packages are automatically published when tags are pushed:
 
-- `mcp/v*` tags trigger publishing of `@helmi/simone-mcp`
+- `mcp/v*` tags trigger publishing of `simone-mcp`
 - `hello/v*` tags trigger publishing of `hello-simone`
 
 **Required Secret**: Set `NPM_TOKEN` in GitHub repository secrets

@@ -30,6 +30,6 @@ npm run tag:legacy   # Tag legacy Simone
 
 1. **Legacy Simone** (`legacy/`) - Git tags only
 2. **hello-simone** (`hello-simone/`) - NPM package
-3. **MCP Server** (`mcp-server/`) - NPM package @helmi/simone-mcp
+3. **MCP Server** (`mcp-server/`) - NPM package simone-mcp
 
 See `VERSIONING.md` for the complete versioning strategy.

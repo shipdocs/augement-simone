@@ -12,10 +12,10 @@ The MCP server is designed to be installed as a global command-line tool or used
 
 ```bash
 # Global installation (recommended for frequent use)
-npm install -g @helmi/simone-mcp
+npm install -g simone-mcp
 
 # Or use directly without installation
-npx @helmi/simone-mcp
+npx simone-mcp
 ```
 
 ## Configuration: Connecting to Your Project
@@ -29,7 +29,7 @@ Create a `.mcp.json` file in the root of your project with the following content
   "mcpServers": {
     "simone": {
       "command": "npx",
-      "args": ["@helmi/simone-mcp"],
+      "args": ["simone-mcp"],
       "env": {
         "PROJECT_PATH": "/path/to/your/project"
       }
