@@ -202,6 +202,32 @@ export class TemplateLoader {
     }
   }
 
+  async loadPartial(name: string): Promise<string | null> {
+    // Try project partial first
+    const projectPartialPath = join(this.projectPath, '.simone', 'prompts', 'partials', `${name}.hbs`);
+    
+    if (existsSync(projectPartialPath)) {
+      try {
+        return await readFile(projectPartialPath, 'utf-8');
+      } catch (error) {
+        logError(error as Error, `Failed to load project partial: ${name}`);
+      }
+    }
+    
+    // Fall back to built-in partial
+    const builtInPartialPath = join(__dirname, 'prompts', 'partials', `${name}.hbs`);
+    
+    if (existsSync(builtInPartialPath)) {
+      try {
+        return await readFile(builtInPartialPath, 'utf-8');
+      } catch (error) {
+        logError(error as Error, `Failed to load built-in partial: ${name}`);
+      }
+    }
+    
+    return null;
+  }
+
   private createErrorPrompt(error: string): PromptTemplate {
     return {
       name: 'error',

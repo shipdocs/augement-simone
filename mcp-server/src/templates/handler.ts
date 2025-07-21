@@ -103,13 +103,24 @@ export class PromptHandler {
 
     // Compile and render the template
     try {
-      const compiledTemplate = await this.loader.compileTemplate(prompt.template);
-      let renderedText = compiledTemplate(context);
-      
-      // Prepend constitution if it exists
-      if (context['constitution']) {
-        renderedText = `## Project Constitution\n\n${context['constitution']}\n\n---\n\n${renderedText}`;
+      // First, render the header_include partial if it exists
+      let header = '';
+      try {
+        const headerPartial = await this.loader.loadPartial('header_include');
+        if (headerPartial) {
+          const compiledHeader = await this.loader.compileTemplate(headerPartial);
+          header = compiledHeader(context);
+        }
+      } catch (headerError) {
+        // Header partial is optional, so we can continue without it
       }
+      
+      // Then render the main template
+      const compiledTemplate = await this.loader.compileTemplate(prompt.template);
+      const mainContent = compiledTemplate(context);
+      
+      // Combine header and main content
+      const renderedText = header ? `${header}\n${mainContent}` : mainContent;
 
       return [{
         role: 'user',

@@ -8,13 +8,18 @@ export function buildTemplateContext(
   // Get project name from path
   const projectName = basename(projectPath);
   
-  // Create ISO timestamp with timezone
-  const timestamp = new Date().toISOString();
+  // Create date/time information
+  const now = new Date();
+  const timestamp = now.toISOString();
+  const currentDate = now.toLocaleDateString();
+  const currentTime = now.toLocaleTimeString();
   
   return {
     PROJECT_PATH: projectPath,
     PROJECT_NAME: projectName,
     TIMESTAMP: timestamp,
+    CURRENT_DATE: currentDate,
+    CURRENT_TIME: currentTime,
     ...args, // Merge in any user arguments
   };
 }
