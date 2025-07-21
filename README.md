@@ -1,4 +1,8 @@
-# Simone - AI-Powered Project Management
+# Simone for Claude Code
+
+<img src="https://github.com/Helmi/claude-simone/raw/master/documentation/static/img/simone-logo-dark.png" width="300" />
+
+## Task & Project Manager for Claude Code
 
 Simone is a comprehensive project and task management system designed specifically for AI-assisted development workflows. It provides structured prompts and tools to help AI assistants understand and work with your projects effectively.
 
