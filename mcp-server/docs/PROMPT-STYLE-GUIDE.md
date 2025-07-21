@@ -132,6 +132,48 @@ Every prompt should include:
 2. **Error handling** - What to do when things go wrong
 3. **Completion criteria** - Clear definition of "done"
 
+## Partials Strategy
+
+Simone uses Handlebars partials to keep prompts DRY and maintainable. We have two main categories:
+
+### GitHub Integration
+
+Use the `{{> github}}` partial to inform about GitHub tool selection:
+
+```handlebars
+{{> github}}
+
+Create an issue with title "Bug: Login fails" and appropriate labels.
+```
+
+The partial tells the LLM whether to use GitHub MCP or CLI based on project configuration. The LLM knows how to use both tools - we just tell it which one is available.
+
+### Project Commands
+
+Use these partials to conditionally include project-specific commands:
+
+- `{{> lint}}` - Run linting if configured
+- `{{> test}}` - Run tests if configured  
+- `{{> typecheck}}` - Run type checking if configured
+- `{{> quality-checks}}` - Run all quality checks (combines above)
+
+Example usage:
+
+```handlebars
+After implementing your changes:
+
+{{> quality-checks}}
+
+Ensure all checks pass before proceeding.
+```
+
+### Partial Guidelines
+
+1. **Keep partials focused** - One concern per partial
+2. **Don't over-instruct** - The LLM knows how to use tools
+3. **Use conditionals in partials** - Not in the main prompt
+4. **Reference project config** - Use `{{project.commands.xxx}}` in partials
+
 ## Common Patterns
 
 ### Research Phase
