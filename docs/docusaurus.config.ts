@@ -60,13 +60,21 @@ const config: Config = {
   
 
   themeConfig: {
+    announcementBar: {
+      id: 'work_in_progress',
+      content:
+        '🚧 **This documentation is a work in progress.** Information may be incomplete or inaccurate. For feedback, please visit the <a target="_blank" rel="noopener noreferrer" href="https://github.com/helmi/claude-simone">GitHub repository</a>. 🚧',
+      backgroundColor: '#fffbdd',
+      textColor: '#665400',
+      isCloseable: true,
+    },
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'Simone',
       logo: {
         alt: 'Simone Logo',
-        src: 'img/logo.svg',
+        src: 'img/simone-icon-only.svg',
       },
       items: [
         {
@@ -77,8 +85,9 @@ const config: Config = {
         },
         {
           href: 'https://github.com/helmi/claude-simone',
-          label: 'GitHub',
           position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },

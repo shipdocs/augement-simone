@@ -89,5 +89,5 @@ Follow these steps for a Code Review (in order)
 
 - **Suggestions** for the User:
 
-  - 🛠️ Use /project:simone:commit `TASK_ID` to commit the changes to git
+  - 🛠️ Use /simone:commit `TASK_ID` to commit the changes to git
   - 🧹 Use /clear to clear the context before starting the next Task

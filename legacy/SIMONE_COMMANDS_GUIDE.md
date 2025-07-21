@@ -4,18 +4,18 @@ This guide explains all available Simone commands and how to use them effectivel
 
 ## Command Overview
 
-Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
+Simone commands follow the pattern: `/simone:<command_name> [arguments]`
 
 ## Setup & Context Commands
 
-### 🚀 `/project:simone:initialize`
+### 🚀 `/simone:initialize`
 
 **Purpose**: Initialize Simone for a new or existing project
 
 **Usage**:
 
 ```
-/project:simone:initialize
+/simone:initialize
 ```
 
 **What it does**:
@@ -31,14 +31,14 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 
 ---
 
-### 🧠 `/project:simone:prime`
+### 🧠 `/simone:prime`
 
 **Purpose**: Load project context at the start of a coding session
 
 **Usage**:
 
 ```
-/project:simone:prime
+/simone:prime
 ```
 
 **What it does**:
@@ -52,14 +52,14 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 
 ## Planning Commands
 
-### 📅 `/project:simone:create_sprints_from_milestone`
+### 📅 `/simone:create_sprints_from_milestone`
 
 **Purpose**: Break down a milestone into manageable sprints
 
 **Usage**:
 
 ```
-/project:simone:create_sprints_from_milestone 001_MVP_FOUNDATION
+/simone:create_sprints_from_milestone 001_MVP_FOUNDATION
 ```
 
 **What it does**:
@@ -73,16 +73,16 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 
 ---
 
-### 📋 `/project:simone:create_sprint_tasks`
+### 📋 `/simone:create_sprint_tasks`
 
 **Purpose**: Create detailed task breakdowns for a sprint
 
 **Usage**:
 
 ```
-/project:simone:create_sprint_tasks S01
+/simone:create_sprint_tasks S01
 # or for specific sprint:
-/project:simone:create_sprint_tasks S02_001_MVP_FOUNDATION
+/simone:create_sprint_tasks S02_001_MVP_FOUNDATION
 ```
 
 **What it does**:
@@ -96,14 +96,14 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 
 ---
 
-### ✏️ `/project:simone:create_general_task`
+### ✏️ `/simone:create_general_task`
 
 **Purpose**: Create standalone tasks not tied to sprints
 
 **Usage**:
 
 ```
-/project:simone:create_general_task
+/simone:create_general_task
 # Then describe your task when prompted
 ```
 
@@ -117,18 +117,18 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 
 ## Development Commands
 
-### 💻 `/project:simone:do_task`
+### 💻 `/simone:do_task`
 
 **Purpose**: Execute a specific task
 
 **Usage**:
 
 ```
-/project:simone:do_task
+/simone:do_task
 # Lists available tasks and prompts for selection
 
 # Or specify task directly:
-/project:simone:do_task T001_S01_setup_tauri
+/simone:do_task T001_S01_setup_tauri
 ```
 
 **What it does**:
@@ -143,21 +143,21 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 
 ---
 
-### 📝 `/project:simone:commit`
+### 📝 `/simone:commit`
 
 **Purpose**: Create well-structured git commits
 
 **Usage**:
 
 ```
-/project:simone:commit
+/simone:commit
 # Reviews changes and creates commit
 
 # Or for specific task:
-/project:simone:commit T001_S01_setup_tauri
+/simone:commit T001_S01_setup_tauri
 
 # With YOLO mode (skip confirmations):
-/project:simone:commit YOLO
+/simone:commit YOLO
 ```
 
 **What it does**:
@@ -172,17 +172,17 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 
 ---
 
-### 🧪 `/project:simone:test`
+### 🧪 `/simone:test`
 
 **Purpose**: Run tests and fix common issues
 
 **Usage**:
 
 ```
-/project:simone:test
+/simone:test
 # Runs all tests
 
-/project:simone:test unit
+/simone:test unit
 # Runs specific test suite
 ```
 
@@ -197,17 +197,17 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 
 ## Review Commands
 
-### 🔍 `/project:simone:code_review`
+### 🔍 `/simone:code_review`
 
 **Purpose**: Review code against specifications
 
 **Usage**:
 
 ```
-/project:simone:code_review
+/simone:code_review
 # Reviews uncommitted changes
 
-/project:simone:code_review src/app/components/GameCanvas.tsx
+/simone:code_review src/app/components/GameCanvas.tsx
 # Reviews specific file
 ```
 
@@ -223,14 +223,14 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 
 ---
 
-### 📊 `/project:simone:project_review`
+### 📊 `/simone:project_review`
 
 **Purpose**: Comprehensive project health check
 
 **Usage**:
 
 ```
-/project:simone:project_review
+/simone:project_review
 ```
 
 **What it does**:
@@ -245,14 +245,14 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 
 ---
 
-### 🧪 `/project:simone:testing_review`
+### 🧪 `/simone:testing_review`
 
 **Purpose**: Analyze test coverage and quality
 
 **Usage**:
 
 ```
-/project:simone:testing_review
+/simone:testing_review
 ```
 
 **What it does**:
@@ -266,14 +266,14 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 
 ---
 
-### 💬 `/project:simone:discuss_review`
+### 💬 `/simone:discuss_review`
 
 **Purpose**: Technical discussion about review findings
 
 **Usage**:
 
 ```
-/project:simone:discuss_review
+/simone:discuss_review
 # After running another review command
 ```
 
@@ -288,23 +288,23 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 
 ---
 
-### 📊 `/project:simone:mermaid`
+### 📊 `/simone:mermaid`
 
 **Purpose**: Create and maintain architecture diagrams
 
 **Usage**:
 
 ```
-/project:simone:mermaid CREATE
+/simone:mermaid CREATE
 # Generate new architecture diagrams
 
-/project:simone:mermaid UPDATE
+/simone:mermaid UPDATE
 # Update existing diagrams based on code changes
 
-/project:simone:mermaid MAINTAIN
+/simone:mermaid MAINTAIN
 # Review and refresh diagrams for accuracy
 
-/project:simone:mermaid UPDATE authentication
+/simone:mermaid UPDATE authentication
 # Update diagrams for specific component
 ```
 
@@ -320,17 +320,17 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 
 ## Automation Commands
 
-### 🚀 `/project:simone:yolo`
+### 🚀 `/simone:yolo`
 
 **Purpose**: Autonomous task execution
 
 **Usage**:
 
 ```
-/project:simone:yolo
+/simone:yolo
 # Works through all open tasks
 
-/project:simone:yolo S02
+/simone:yolo S02
 # Works through specific sprint
 ```
 
@@ -357,41 +357,41 @@ Simone commands follow the pattern: `/project:simone:<command_name> [arguments]`
 
 ```bash
 # Start of day
-/project:simone:prime
+/simone:prime
 
 # Work on tasks
-/project:simone:do_task
-/project:simone:test
-/project:simone:commit
+/simone:do_task
+/simone:test
+/simone:commit
 
 # End of day
-/project:simone:project_review
+/simone:project_review
 ```
 
 ### Sprint Workflow
 
 ```bash
 # Sprint planning
-/project:simone:create_sprint_tasks S02
+/simone:create_sprint_tasks S02
 
 # Sprint execution
-/project:simone:do_task T001_S02_first_task
-/project:simone:do_task T002_S02_second_task
-/project:simone:commit --review
+/simone:do_task T001_S02_first_task
+/simone:do_task T002_S02_second_task
+/simone:commit --review
 
 # Sprint review
-/project:simone:project_review
+/simone:project_review
 ```
 
 ### Quick Fixes
 
 ```bash
 # Bug fix workflow
-/project:simone:create_general_task
+/simone:create_general_task
 # Describe: "Fix memory leak in /src/foo.bar"
-/project:simone:do_task T003
-/project:simone:test
-/project:simone:commit T003
+/simone:do_task T003
+/simone:test
+/simone:commit T003
 ```
 
 ## Tips & Tricks

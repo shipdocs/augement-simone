@@ -120,7 +120,7 @@ Current setup:
 Next steps:
 - Review your architecture: 01_PROJECT_DOCS/ARCHITECTURE.md
 - Check milestone requirements: 02_REQUIREMENTS/[milestone]/
-- Start first task: /project:simone:create_general_task
+- Start first task: /simone:create_general_task
 
 Ready to begin development!
 ```

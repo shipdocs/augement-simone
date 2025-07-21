@@ -25,7 +25,7 @@ Once the files are in place, you need to initialize the project. This allows Sim
 In your AI chat interface (e.g., Claude Code), run:
 
 ```
-/project:simone:initialize
+/simone:initialize
 ```
 
 The AI will guide you through a conversational setup process. It can work with new or existing codebases and can help you create project documentation (like architecture overviews) or import documents you already have.
@@ -41,12 +41,12 @@ After initialization, your next step is to define the work to be done within Sim
 
 ### 2. Break Down into Sprints
 
-*   **Command:** `/project:simone:create_sprints_from_milestone`
+*   **Command:** `/simone:create_sprints_from_milestone`
 *   **Purpose:** To analyze a milestone's requirements and break them down into smaller, logical sprints.
 
 ### 3. Create Tasks for the Current Sprint
 
-*   **Command:** `/project:simone:create_sprint_tasks`
+*   **Command:** `/simone:create_sprint_tasks`
 *   **Purpose:** To generate detailed, actionable tasks for your *current* sprint. This is done one sprint at a time to ensure tasks are based on the most recent state of the codebase.
 
-Once tasks are created, you are ready to begin development with the `/project:simone:do_task` command.
+Once tasks are created, you are ready to begin development with the `/simone:do_task` command.

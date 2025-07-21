@@ -9,7 +9,7 @@ The `initialize` command sets up the Simone framework in a new or existing proje
 ## Usage
 
 ```
-/project:simone:initialize
+/simone:initialize
 ```
 
 ## Description

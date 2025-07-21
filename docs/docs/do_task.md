@@ -10,12 +10,12 @@ The `do_task` command is the primary command for executing development work. It 
 
 To let the AI select the next available task:
 ```
-/project:simone:do_task
+/simone:do_task
 ```
 
 To specify a task directly:
 ```
-/project:simone:do_task T01_S01
+/simone:do_task T01_S01
 ```
 
 ## Arguments

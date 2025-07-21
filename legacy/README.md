@@ -23,7 +23,7 @@ This sets up the folder structure and installs/updates the command files in your
 Open your project in Claude Code and run:
 
 ```
-/project:simone:initialize
+/simone:initialize
 ```
 
 This guides you through the basic setup process. Works with new or existing codebases, and can help you create project documentation (PRDs, architecture docs) or work with documents you already have.
@@ -40,7 +40,7 @@ Create a milestone folder in `.simone/02_REQUIREMENTS/` named `M01_Your_Mileston
 ### 4. Break Down into Sprints
 
 ```
-/project:simone:create_sprints_from_milestone
+/simone:create_sprints_from_milestone
 ```
 
 This analyzes your milestone and breaks it down into logical sprints. It looks at the entire scope and creates meaningful sprint boundaries without detailed tasks yet.
@@ -48,7 +48,7 @@ This analyzes your milestone and breaks it down into logical sprints. It looks a
 ### 5. Create Your First Tasks
 
 ```
-/project:simone:create_sprint_tasks
+/simone:create_sprint_tasks
 ```
 
 This analyzes your sprints, reviews documentation, researches necessary information, and identifies knowledge gaps to gain comprehensive understanding of your project. Creates detailed, actionable tasks for the current sprint.
@@ -58,20 +58,20 @@ This analyzes your sprints, reviews documentation, researches necessary informat
 ### 6. Start Working
 
 ```
-/project:simone:do_task
+/simone:do_task
 ```
 
 This will automatically pick a task from your general tasks or sprints. For faster execution, specify a task ID:
 
 ```
-/project:simone:do_task T01_S01
+/simone:do_task T01_S01
 ```
 
 Claude will then work through the specified task with full project context.
 
 That's the basic workflow to get started! You can also:
 
-- Create general tasks with `/project:simone:create_general_task`
+- Create general tasks with `/simone:create_general_task`
 - Use YOLO mode to run a full sprint autonomously
 - Explore other commands in `.claude/commands/simone/`
 

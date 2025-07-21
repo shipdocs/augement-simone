@@ -175,10 +175,10 @@ Based on milestone scope, suggest needed documents:
 ⏭️ **Recommended Next Steps**:
 - Review milestone details: `02_REQUIREMENTS/M##_[Name]/M##_milestone_meta.md`
 - Create supporting documentation as planned
-- Break down into sprints: `/project:simone:create_sprints_from_milestone M##`
+- Break down into sprints: `/simone:create_sprints_from_milestone M##`
 - Update with specific requirements as they become clear
 
-🎯 **Ready for Development**: Use `/project:simone:create_sprints_from_milestone M##` when ready to start implementation planning
+🎯 **Ready for Development**: Use `/simone:create_sprints_from_milestone M##` when ready to start implementation planning
 ```
 
 **IMPORTANT NOTES**:

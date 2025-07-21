@@ -238,14 +238,14 @@ Next Steps:
 
 ```bash
 # Generate all architecture diagrams
-/project:simone:mermaid CREATE
+/simone:mermaid CREATE
 
 # Update existing diagrams
-/project:simone:mermaid UPDATE
+/simone:mermaid UPDATE
 
 # Maintain and validate diagrams
-/project:simone:mermaid MAINTAIN
+/simone:mermaid MAINTAIN
 
 # Focus on specific component
-/project:simone:mermaid UPDATE authentication
+/simone:mermaid UPDATE authentication
 ```
