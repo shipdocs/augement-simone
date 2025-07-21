@@ -9,7 +9,6 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { existsSync } from 'fs';
 import { readFile } from 'fs/promises';
-import Handlebars from 'handlebars';
 import { TemplateLoader } from './loader.js';
 import { buildTemplateContext } from './context.js';
 import { registerHelpers } from './helpers/index.js';
@@ -138,6 +137,10 @@ export class PromptHandler {
         },
       }];
     }
+  }
+
+  clearCache(): void {
+    this.loader.clearCache();
   }
 
   async listAvailablePrompts(): Promise<PromptTemplate[]> {

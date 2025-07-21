@@ -8,6 +8,9 @@ import {
   ListToolsRequestSchema,
   CallToolRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
+import { watch } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 import { getEnvConfig } from './config/index.js';
 import { initializeTemplating } from './templates/index.js';
@@ -41,7 +44,9 @@ const server = new Server(
   },
   {
     capabilities: {
-      prompts: {},
+      prompts: {
+        listChanged: true,
+      },
       tools: {},
     },
   },
@@ -90,10 +95,46 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   return handleToolCall(name, args || {}, tools, toolContext);
 });
 
+// Watch for prompt changes
+function watchPrompts() {
+  const projectPromptsDir = join(config.projectPath, '.simone', 'prompts');
+  const __dirname = dirname(fileURLToPath(import.meta.url));
+  const builtInPromptsDir = join(__dirname, 'templates', 'prompts');
+  
+  const watchDir = (dir: string) => {
+    try {
+      watch(dir, { recursive: true }, async (_eventType, filename) => {
+        if (filename && (filename.endsWith('.yaml') || filename.endsWith('.hbs'))) {
+          // Clear the template cache
+          promptHandler.clearCache();
+          
+          // Send notification that prompts have changed
+          await server.notification({
+            method: 'notifications/prompts/list_changed',
+            params: {},
+          });
+        }
+      });
+    } catch (error) {
+      // Directory might not exist, that's okay
+    }
+  };
+  
+  watchDir(projectPromptsDir);
+  
+  // Only watch built-in prompts in development
+  if (process.env['NODE_ENV'] !== 'production') {
+    watchDir(builtInPromptsDir);
+  }
+}
+
 // Start server
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
+  
+  // Start watching for prompt changes
+  watchPrompts();
   
   // Server started successfully - no need to log this
 }

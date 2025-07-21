@@ -210,7 +210,7 @@ export class TemplateLoader {
       try {
         return await readFile(projectPartialPath, 'utf-8');
       } catch (error) {
-        logError(error as Error, `Failed to load project partial: ${name}`);
+        logError(`Failed to load project partial ${name}: ${error}`);
       }
     }
     
@@ -221,7 +221,7 @@ export class TemplateLoader {
       try {
         return await readFile(builtInPartialPath, 'utf-8');
       } catch (error) {
-        logError(error as Error, `Failed to load built-in partial: ${name}`);
+        logError(`Failed to load built-in partial ${name}: ${error}`);
       }
     }
     
