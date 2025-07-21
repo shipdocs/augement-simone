@@ -5,7 +5,6 @@
  */
 
 import { PromptHandler } from './handler.js';
-import { ConfigLoader } from '../config/loader.js';
 
 export { PromptHandler } from './handler.js';
 export { TemplateLoader } from './loader.js';

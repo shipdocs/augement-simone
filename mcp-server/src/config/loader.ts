@@ -7,7 +7,7 @@
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import yaml from 'js-yaml';
-import { ProjectConfig, ProjectContext, ResolvedContext } from './types.js';
+import { ProjectConfig, ResolvedContext } from './types.js';
 import { logError } from '../utils/logger.js';
 
 type FileReader = (path: string, encoding: 'utf8') => string;

@@ -87,7 +87,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
   
-  return handleToolCall(name, args || {}, tools);
+  return handleToolCall(name, args || {}, tools, toolContext);
 });
 
 // Start server

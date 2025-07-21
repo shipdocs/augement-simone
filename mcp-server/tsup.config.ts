@@ -34,5 +34,11 @@ export default defineConfig({
       join('src', 'templates', 'prompts'),
       join('dist', 'prompts')
     );
+    
+    // Copy .simone templates
+    await copyDir(
+      join('.simone'),
+      join('dist', '.simone')
+    );
   },
 });

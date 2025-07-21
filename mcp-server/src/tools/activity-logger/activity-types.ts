@@ -26,5 +26,5 @@ export function detectActivityType(activity: string): string {
   
   // If no match, extract first verb or return 'other'
   const firstWord = lowerActivity.split(' ')[0];
-  return firstWord.length > 2 ? firstWord : 'other';
+  return firstWord && firstWord.length > 2 ? firstWord : 'other';
 }

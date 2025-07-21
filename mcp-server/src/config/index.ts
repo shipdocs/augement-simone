@@ -20,10 +20,10 @@ export interface EnvConfig {
  * @throws {Error} If required environment variables are missing
  */
 export function getEnvConfig(): EnvConfig {
-  const projectPath = process.env.PROJECT_PATH;
+  const projectPath = process.env['PROJECT_PATH'];
   
   if (!projectPath) {
-    throw new Error('PROJECT_PATH environment variable is required');
+    throw new Error('PROJECT_PATH environment variable is required. Please check your .mcp.json configuration.');
   }
   
   return {

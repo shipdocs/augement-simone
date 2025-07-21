@@ -56,7 +56,8 @@ export function getToolSchemas(tools: Map<string, ToolDefinition>): Tool[] {
 export async function handleToolCall(
   name: string,
   args: Record<string, any>,
-  tools: Map<string, ToolDefinition>
+  tools: Map<string, ToolDefinition>,
+  context: ToolContext
 ): Promise<CallToolResult> {
   const toolDef = tools.get(name);
   
@@ -72,5 +73,5 @@ export async function handleToolCall(
     };
   }
 
-  return toolDef.handler(args);
+  return toolDef.handler(args, context);
 }
