@@ -36,7 +36,7 @@ To manually configure, add this to your project's `.mcp.json`:
   "mcpServers": {
     "simone": {
       "command": "npx",
-      "args": ["@helmi/simone-mcp"],
+      "args": ["@helmi74/simone-mcp"],
       "env": {
         "PROJECT_PATH": "/path/to/your/project"
       }

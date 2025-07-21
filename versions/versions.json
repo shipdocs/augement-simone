@@ -21,12 +21,12 @@
       "description": "NPM installer for Simone (supports both MCP and legacy)"
     },
     "mcp-server": {
-      "name": "@helmi/simone-mcp",
+      "name": "@helmi74/simone-mcp",
       "version": "0.1.0",
       "type": "npm",
       "tagPrefix": "mcp/v",
       "path": "./mcp-server",
-      "packageName": "@helmi/simone-mcp",
+      "packageName": "@helmi74/simone-mcp",
       "description": "Model Context Protocol server implementation"
     }
   }
