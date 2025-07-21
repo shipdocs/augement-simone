@@ -5,26 +5,11 @@ import { promises as fs } from 'fs';
 import path from 'path';
 
 export async function installLegacy(dryRun = false) {
-  console.log(chalk.yellow.bold('⚠️  LEGACY VERSION NOTICE ⚠️\n'));
+  console.log(chalk.green.bold('✅  STABLE VERSION\n'));
   console.log(chalk.white(
-    'The legacy version of Simone is being phased out.\n' +
-    'We recommend using the new MCP version instead.\n'
+    'Installing the stable, production-ready version of Simone.\n' +
+    'This is the recommended version for most users.\n'
   ));
-
-  const { confirmLegacy } = await inquirer.prompt([
-    {
-      type: 'confirm',
-      name: 'confirmLegacy',
-      message: 'Do you want to continue with legacy installation?',
-      default: false
-    }
-  ]);
-
-  if (!confirmLegacy) {
-    console.log(chalk.cyan('\nTo install the MCP version, run:'));
-    console.log(chalk.white('  npx hello-simone --mcp\n'));
-    process.exit(0);
-  }
 
   const spinner = ora();
 
@@ -79,10 +64,11 @@ export async function installLegacy(dryRun = false) {
     
     spinner.succeed('Created project manifest');
 
-    console.log(chalk.green.bold('\n✅ Legacy Simone installation complete!\n'));
-    console.log(chalk.yellow('Note: The legacy system has limited functionality.'));
-    console.log(chalk.cyan('For full features, consider migrating to MCP version:'));
-    console.log(chalk.white('  npx hello-simone --mcp\n'));
+    console.log(chalk.green.bold('\n✅ Simone installation complete!\n'));
+    console.log(chalk.cyan('To get started:'));
+    console.log(chalk.white('  1. Navigate to your project directory'));
+    console.log(chalk.white('  2. Run /simone:initialize in Claude Code\n'));
+    console.log(chalk.gray('For experimental MCP version: npx hello-simone --mcp'));
 
   } catch (error) {
     spinner.fail('Installation failed');
