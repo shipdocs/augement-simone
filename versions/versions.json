@@ -13,12 +13,12 @@
     },
     "hello-simone": {
       "name": "hello-simone",
-      "version": "0.5.4",
+      "version": "0.6.0",
       "type": "npm",
       "tagPrefix": "hello/v",
       "path": "./hello-simone",
       "packageName": "hello-simone",
-      "description": "NPM installer for legacy Simone"
+      "description": "NPM installer for Simone (supports both MCP and legacy)"
     },
     "mcp-server": {
       "name": "@helmi/simone-mcp",

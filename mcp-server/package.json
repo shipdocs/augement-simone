@@ -12,13 +12,18 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "bin": {
+    "simone-mcp": "./dist/index.js"
+  },
   "files": [
     "dist",
+    ".simone",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
     "dev": "tsx watch src/index.ts",
+    "dev:build": "tsup --watch",
     "build": "tsup",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -44,6 +49,15 @@
   ],
   "author": "Helmi",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Helmi/claude-simone.git",
+    "directory": "mcp-server"
+  },
+  "bugs": {
+    "url": "https://github.com/Helmi/claude-simone/issues"
+  },
+  "homepage": "https://github.com/Helmi/claude-simone/tree/main/mcp-server#readme",
   "engines": {
     "node": ">=20.0.0"
   },
@@ -67,5 +81,8 @@
     "better-sqlite3": "^12.2.0",
     "handlebars": "^4.7.8",
     "js-yaml": "^4.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
