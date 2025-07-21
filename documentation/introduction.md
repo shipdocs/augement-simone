@@ -37,19 +37,19 @@ Instead of expecting the AI to retain all project knowledge across long interact
     title="File-Based Context"
     description="Organizes project knowledge in a structured directory of Markdown files for transparent context management."
     icon="📁"
-    to="/docs/legacy-system/overview"
+    to="/legacy-system/overview"
   />
   <FeatureCard
     title="AI-Guided Commands"
     description="Utilizes human-readable Markdown files as detailed instructions for AI agents to execute complex tasks."
     icon="🤖"
-    to="/docs/legacy-system/command-reference/initialize"
+    to="/legacy-system/command-reference/initialize"
   />
   <FeatureCard
     title="Iterative Workflow"
     description="Supports a structured development cycle from planning milestones to executing and committing individual tasks."
     icon="🔄"
-    to="/docs/legacy-system/workflow"
+    to="/legacy-system/workflow"
   />
 </div>
 
@@ -60,19 +60,19 @@ Instead of expecting the AI to retain all project knowledge across long interact
     title="Protocol-Driven Interaction"
     description="Communicates with AI agents via the Model Context Protocol (MCP) for robust and standardized interactions."
     icon="⚡"
-    to="/docs/mcp-server/overview"
+    to="/mcp-server/overview"
   />
   <FeatureCard
     title="Activity Logging"
     description="Features a built-in SQLite database to persistently log all AI-assisted development activities for analysis."
     icon="📊"
-    to="/docs/mcp-server/workflow"
+    to="/mcp-server/workflow"
   />
   <FeatureCard
     title="Dynamic Prompts"
     description="Leverages Handlebars templating to create highly configurable and context-aware prompts for AI agents."
     icon="✨"
-    to="/docs/mcp-server/prompt-reference"
+    to="/mcp-server/prompt-reference"
   />
 </div>
 
