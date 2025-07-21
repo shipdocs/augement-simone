@@ -16,23 +16,11 @@ The initial implementation of Simone. A directory-based task management system t
 
 ### 🚀 MCP Server (Early Access)
 
-A new implementation using the Model Context Protocol (MCP). This version offers structured prompts, activity tracking, and deeper Claude Code integration.
+A new implementation using the Model Context Protocol (MCP). This version offers structured prompts, activity tracking, and more in the future.
 
 ⚠️ **Early Access**: The MCP version is in active development and best suited for early adopters.
 
 **[→ Get started with MCP Simone](/mcp-server/README.md)**
-
-## Which Version Should I Use?
-
-- **Use Legacy Simone** if you want the more complete feature set with directory-based organization
-- **Try MCP Simone** if you want to experiment with the new Model Context Protocol integration
-
-Both versions can be installed using the `hello-simone` installer:
-
-```bash
-npx hello-simone          # Install legacy version
-npx hello-simone --mcp    # Install MCP version (early access)
-```
 
 ## Repository Structure
 

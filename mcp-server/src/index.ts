@@ -105,18 +105,26 @@ function watchPrompts() {
     try {
       watch(dir, { recursive: true }, async (_eventType, filename) => {
         if (filename && (filename.endsWith('.yaml') || filename.endsWith('.hbs'))) {
+          console.log(`[Simone MCP] Detected change in: ${filename}`);
+          
           // Clear the template cache
           promptHandler.clearCache();
           
           // Send notification that prompts have changed
-          await server.notification({
-            method: 'notifications/prompts/list_changed',
-            params: {},
-          });
+          try {
+            await server.notification({
+              method: 'notifications/prompts/list_changed',
+              params: {},
+            });
+            console.log('[Simone MCP] Sent prompts/list_changed notification');
+          } catch (error) {
+            console.error('[Simone MCP] Failed to send notification:', error);
+          }
         }
       });
+      console.log(`[Simone MCP] Watching directory: ${dir}`);
     } catch (error) {
-      // Directory might not exist, that's okay
+      console.log(`[Simone MCP] Could not watch directory: ${dir} (this is okay if it doesn't exist)`);
     }
   };
   
@@ -135,8 +143,9 @@ async function main() {
   
   // Start watching for prompt changes
   watchPrompts();
+  console.log('[Simone MCP] Server started with prompt hot-reload enabled');
   
-  // Server started successfully - no need to log this
+  // Server started successfully
 }
 
 main().catch(async (error) => {
