@@ -94,7 +94,7 @@ When configured in a project's `.mcp.json`:
   "mcpServers": {
     "simone": {
       "command": "npx",
-      "args": ["@helmi74/simone-mcp"],
+      "args": ["simone-mcp"],
       "env": {
         "PROJECT_PATH": "/path/to/project"
       }
