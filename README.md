@@ -1,45 +1,44 @@
-# Simone - Project and Task Management for Claude Code
+# Simone - AI-Powered Project Management
 
-This repository contains the Simone project management system, currently undergoing a major architectural transition from a directory-based command system to a Model Context Protocol (MCP) server.
+Simone is a comprehensive project and task management system designed specifically for AI-assisted development workflows. It provides structured prompts and tools to help AI assistants understand and work with your projects effectively.
 
 [![Mentioned in Awesome Claude Code](https://awesome.re/mentioned-badge.svg)](https://github.com/hesreallyhim/awesome-claude-code)
 
-## Current Status
+## Choose Your Version
 
-⚠️ **Repository in Transition**: This repository contains both the stable legacy system and an early-stage MCP server implementation.
+This repository contains two implementations of Simone:
+
+### 🏗️ Legacy System (Original)
+
+The initial implementation of Simone. A directory-based task management system that provides a more complete feature set and has been used in real projects.
+
+**[→ Get started with Legacy Simone](/legacy/README.md)**
+
+### 🚀 MCP Server (Early Access)
+
+A new implementation using the Model Context Protocol (MCP). This version offers structured prompts, activity tracking, and deeper Claude Code integration.
+
+⚠️ **Early Access**: The MCP version is in active development and best suited for early adopters.
+
+**[→ Get started with MCP Simone](/mcp-server/README.md)**
+
+## Which Version Should I Use?
+
+- **Use Legacy Simone** if you want the more complete feature set with directory-based organization
+- **Try MCP Simone** if you want to experiment with the new Model Context Protocol integration
+
+Both versions can be installed using the `hello-simone` installer:
+
+```bash
+npx hello-simone          # Install legacy version
+npx hello-simone --mcp    # Install MCP version (early access)
+```
 
 ## Repository Structure
 
-### `/legacy` - Stable Simone System
-
-The current, production-ready version of Simone. This is a directory-based task management system that works today.
-
-**To use Simone right now, see [/legacy/README.md](/legacy/README.md) for installation and usage instructions.**
-
-### `/hello-simone` - NPM Installer
-
-The installer package for the legacy Simone system. Install with:
-
-```bash
-npx hello-simone
-```
-
-### `/mcp-server` - Early Development
-
-🚧 **Very early development stage** - The future MCP-based implementation of Simone.
-
-- No documentation yet
-- Not ready for use
-- Active development in progress
-- Will eventually replace the legacy system
-
-## Getting Started
-
-For the current, working version of Simone:
-
-1. Navigate to [/legacy/README.md](/legacy/README.md)
-2. Follow the installation instructions there
-3. Or simply run `npx hello-simone` in your project
+- [`/legacy`](/legacy) - The original directory-based Simone system
+- [`/mcp-server`](/mcp-server) - The new MCP implementation (early access)
+- [`/hello-simone`](/hello-simone) - Universal installer for both versions
 
 ## Contributing
 
