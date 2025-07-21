@@ -7,11 +7,12 @@
 import type { PromptMessage } from '@modelcontextprotocol/sdk/types.js';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { existsSync } from 'fs';
+import { readFile } from 'fs/promises';
 import Handlebars from 'handlebars';
 import { TemplateLoader } from './loader.js';
 import { buildTemplateContext } from './context.js';
 import { ConfigLoader } from '../config/index.js';
-import { registerFeatureHelper } from './helpers/feature.js';
 import type { PromptTemplate } from '../types/index.js';
 
 /**
@@ -27,12 +28,23 @@ export class PromptHandler {
     this.loader = new TemplateLoader(projectPath);
     this.configLoader = new ConfigLoader(projectPath);
     
-    // Register custom helpers
-    registerFeatureHelper(Handlebars, this.configLoader);
-    
     // Register equality helper for comparisons
     Handlebars.registerHelper('eq', function(a: any, b: any) {
       return a === b;
+    });
+    
+    // Register comparison helpers
+    Handlebars.registerHelper('lt', function(a: any, b: any) {
+      return a < b;
+    });
+    Handlebars.registerHelper('lte', function(a: any, b: any) {
+      return a <= b;
+    });
+    Handlebars.registerHelper('gt', function(a: any, b: any) {
+      return a > b;
+    });
+    Handlebars.registerHelper('gte', function(a: any, b: any) {
+      return a >= b;
     });
   }
 
@@ -57,10 +69,54 @@ export class PromptHandler {
     // Add project configuration to context
     const projectConfig = this.configLoader.getConfig();
     if (projectConfig) {
-      context.project = projectConfig.project;
-      context.contexts = projectConfig.contexts;
-      context.shared = projectConfig.shared;
-      context.github = projectConfig.github;
+      context['project'] = projectConfig.project;
+      context['contexts'] = projectConfig.contexts;
+      context['shared'] = projectConfig.shared;
+      context['github'] = projectConfig.github;
+    }
+
+    // Check for Simone files existence
+    const simoneFiles = {
+      hasConfig: existsSync(join(this.projectPath, '.simone', 'project.yaml')),
+      hasConstitution: existsSync(join(this.projectPath, '.simone', 'constitution.md')),
+      hasArchitecture: existsSync(join(this.projectPath, '.simone', 'architecture.md')),
+      isEmptyProject: !existsSync(join(this.projectPath, 'package.json')) && 
+                      !existsSync(join(this.projectPath, 'README.md')) &&
+                      !existsSync(join(this.projectPath, 'src')) &&
+                      !existsSync(join(this.projectPath, 'lib')) &&
+                      !existsSync(join(this.projectPath, 'index.js')) &&
+                      !existsSync(join(this.projectPath, 'index.ts')),
+    };
+    
+    // Add extended project context
+    const projectContext = {
+      hasReadme: existsSync(join(this.projectPath, 'README.md')),
+      hasPackageJson: existsSync(join(this.projectPath, 'package.json')),
+      hasGitignore: existsSync(join(this.projectPath, '.gitignore')),
+      hasSrcDir: existsSync(join(this.projectPath, 'src')),
+      hasTestDir: existsSync(join(this.projectPath, 'test')) || 
+                  existsSync(join(this.projectPath, 'tests')),
+    };
+    
+    context['simoneFiles'] = simoneFiles;
+    context['projectContext'] = projectContext;
+
+    // Auto-load constitution if it exists
+    if (simoneFiles.hasConstitution) {
+      try {
+        const constitutionPath = join(this.projectPath, '.simone', 'constitution.md');
+        const constitutionContent = await readFile(constitutionPath, 'utf8');
+        context['constitution'] = constitutionContent;
+      } catch (error) {
+        // Return error to LLM if we can't read the constitution
+        return [{
+          role: 'user',
+          content: {
+            type: 'text',
+            text: `Tell the user an error happened and show these error details <error_message>Failed to read constitution.md: ${error}</error_message>. Tell them to check if the file exists at .simone/constitution.md and has proper read permissions.`,
+          },
+        }];
+      }
     }
 
     // Apply defaults for missing arguments
