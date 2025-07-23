@@ -91,9 +91,6 @@ template: |
   Proceed with the implementation plan
   {{/if}}
   
-  {{#if features.git_worktree.enabled}}
-  {{> git_worktree}}
-  {{else}}
   ## 4 · Setup development branch
   
   Determine branch type based on issue labels:
@@ -104,7 +101,6 @@ template: |
   Create a descriptive branch name based on the issue.
   
   Ensure you're on the correct branch before starting implementation.
-  {{/if}}
   
   ## 5 · Implement the solution
   

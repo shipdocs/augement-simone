@@ -127,16 +127,7 @@ export interface GitHubConfig {
  * Features configuration for optional functionality
  */
 export interface FeaturesConfig {
-  git_worktree?: GitWorktreeConfig;
   pr_review_wait?: PrReviewWaitConfig;
-}
-
-/**
- * Git worktree feature configuration
- */
-export interface GitWorktreeConfig {
-  enabled: boolean;
-  path?: string;  // defaults to '.worktrees'
 }
 
 /**
