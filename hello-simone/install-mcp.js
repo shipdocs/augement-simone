@@ -166,8 +166,7 @@ export async function installMCP(dryRun = false) {
         const templates = [
           { name: 'project.yaml.template', target: 'project.yaml.template' },
           { name: 'constitution.md.template', target: 'constitution.md.template' },
-          { name: 'architecture.md.template', target: 'architecture.md.template' },
-          { name: 'CLAUDE.md.template', target: 'CLAUDE.md.template' }
+          { name: 'architecture.md.template', target: 'architecture.md.template' }
         ];
 
         let downloadedCount = 0;
@@ -187,7 +186,7 @@ export async function installMCP(dryRun = false) {
           }
 
           // Download template from GitHub
-          const templateUrl = `https://raw.githubusercontent.com/Helmi/claude-simone/main/mcp-server/templates/${template.name}`;
+          const templateUrl = `https://raw.githubusercontent.com/Helmi/claude-simone/master/mcp-server/templates/${template.name}`;
           
           try {
             const { stdout } = await execAsync(`curl -s -f "${templateUrl}"`);
@@ -215,7 +214,7 @@ export async function installMCP(dryRun = false) {
           spinner.warn(`Failed to download ${failedCount} template(s)`);
           console.log(chalk.yellow("\nSome templates could not be downloaded."));
           console.log(chalk.yellow("You can download them manually from:"));
-          console.log(chalk.cyan("https://github.com/Helmi/claude-simone/tree/main/mcp-server/templates"));
+          console.log(chalk.cyan("https://github.com/Helmi/claude-simone/tree/master/mcp-server/templates"));
           
           // Don't exit if some templates fail - user can continue with what downloaded
         }
