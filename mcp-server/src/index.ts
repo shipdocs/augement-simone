@@ -17,6 +17,8 @@ import { initializeTemplating } from './templates/index.js';
 import { initializeLogger, logError, logDebug } from './utils/logger.js';
 import { ActivityLogger } from './tools/activity-logger/index.js';
 import { getTools, getToolSchemas, handleToolCall, type ToolContext } from './tools/index.js';
+import { DatabaseConnection } from './tools/database.js';
+import type Database from 'better-sqlite3';
 
 // Get configuration
 const config = getEnvConfig();
@@ -27,10 +29,28 @@ initializeLogger(config.projectPath);
 // Initialize templating system
 const promptHandler = initializeTemplating(config.projectPath);
 
+// Initialize database connection
+let databaseConnection: DatabaseConnection;
+let database: Database.Database;
+
+try {
+  databaseConnection = new DatabaseConnection(config.projectPath);
+  database = databaseConnection.getDb();
+  logDebug('Database connection initialized successfully').catch(() => {});
+} catch (error) {
+  const errorMessage = `CRITICAL DATABASE ERROR: Failed to initialize database connection: ${error instanceof Error ? error.message : String(error)}`;
+  logError(new Error(errorMessage)).then(() => {
+    console.error(errorMessage); // Also output to console for immediate visibility
+    process.exit(1);
+  });
+  throw error; // This will never be reached but satisfies TypeScript
+}
+
 // Initialize tool context
 const toolContext: ToolContext = {
   projectPath: config.projectPath,
-  activityLogger: new ActivityLogger(config.projectPath),
+  activityLogger: new ActivityLogger(config.projectPath, database),
+  database,
 };
 
 // Get available tools
@@ -152,3 +172,21 @@ main().catch(async (error) => {
   await logError(error instanceof Error ? error : new Error(String(error)));
   process.exit(1);
 });
+
+// Cleanup on exit
+const handleShutdown = async (signal: string) => {
+  try {
+    await logDebug(`Received ${signal}, shutting down server...`);
+    if (databaseConnection) {
+      databaseConnection.close();
+      await logDebug('Database connection closed');
+    }
+    process.exit(0);
+  } catch (error) {
+    console.error('Error during shutdown:', error);
+    process.exit(1);
+  }
+};
+
+process.on('SIGINT', () => handleShutdown('SIGINT'));
+process.on('SIGTERM', () => handleShutdown('SIGTERM'));

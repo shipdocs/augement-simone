@@ -1,5 +1,4 @@
 import Database from 'better-sqlite3';
-import { DatabaseConnection } from '../database.js';
 import { LogActivityParams } from './types.js';
 import { detectActivityType } from './activity-types.js';
 import { normalizeFilePath } from './path-normalizer.js';
@@ -10,9 +9,8 @@ export { activityLoggerTool, handleActivityLoggerTool } from './tool.js';
 export class ActivityLogger {
   private db: Database.Database;
   
-  constructor(private projectPath: string) {
-    const connection = new DatabaseConnection(projectPath);
-    this.db = connection.getDb();
+  constructor(private projectPath: string, database: Database.Database) {
+    this.db = database;
   }
   
   logActivity(params: LogActivityParams): { success: boolean; activityId?: number; error?: string } {
@@ -76,9 +74,14 @@ export class ActivityLogger {
       
       return { success: true, activityId };
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      
+      // Log error for debugging
+      console.error(`[ActivityLogger.logActivity] Database operation failed: ${errorMessage}`, error);
+      
       return { 
         success: false, 
-        error: error instanceof Error ? error.message : 'Unknown error' 
+        error: errorMessage
       };
     }
   }
