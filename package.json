@@ -12,8 +12,8 @@
     "tag:legacy": "node versions/version-manager.js tag legacy",
     "tag:mcp": "node versions/version-manager.js tag mcp-server",
     "tag:hello": "node versions/version-manager.js tag hello-simone",
-    "lint:md": "markdownlint-cli2 \"**/*.md\" \"!node_modules\" \"!**/node_modules\" \"!.worktrees/**\"",
-    "lint:md:fix": "markdownlint-cli2 \"**/*.md\" \"!node_modules\" \"!**/node_modules\" \"!.worktrees/**\" --fix"
+    "lint:md": "markdownlint-cli2 \"**/*.md\" \"!node_modules\" \"!**/node_modules\"",
+    "lint:md:fix": "markdownlint-cli2 \"**/*.md\" \"!node_modules\" \"!**/node_modules\" --fix"
   },
   "repository": {
     "type": "git",
